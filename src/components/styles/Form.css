@@ -1,0 +1,65 @@
+#form {
+    position: relative;
+    left: 2em;
+    width: 20em;
+    bottom: 15em;
+}
+
+#Form {
+    box-shadow: 5px 8px 21px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 5px 8px 21px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 8px 21px 0px rgba(0,0,0,0.75);
+}
+
+#text{
+    position: relative;
+    bottom: 40em;
+    left: 6em;
+    font-family: -apple-system;
+
+
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+
+.formData {
+    background-color: white;
+    position: relative;
+    bottom: 40em;
+    height: 0;
+
+
+}
+
+#SaveButtonForm {
+    border: 0;
+    box-shadow: none;
+    border-radius: 0px;
+    background-color: #0677cf;
+    position: relative;
+    left: 6.4em;
+    bottom: 2em;
+    width: 7em;
+    height: 3em;
+}
+
+#formTest{
+    position: relative;
+    left: 45em;
+    width: 40em;
+    bottom: 15em;
+    height: 0;
+}
+
+
+
+/*className={"container-fluid"} id={"form"}*/
