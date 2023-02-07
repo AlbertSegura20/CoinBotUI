@@ -11,55 +11,38 @@ const Home = ():JSX.Element => {
     const [edit, setEdit] = useState<boolean>(true);
 
 
-    if(edit){
-
-
         return (
-
-
             <div id={"body"}>
-                <Menu/>
-                <Form/>
+            <Menu/>
             </div>
-
         )
 
+    // if(edit){
+    //
+    //
+    //     return (
+    //
+    //
+    //         <div id={"body"}>
+    //             <Menu/>
+    //             <Form/>
+    //         </div>
+    //
+    //     )
+    //
+    //
+    // }else{
+    //     return (
+    //
+    //         <div id={"body"}>
+    //             <Menu/>
+    //             <Table/>
+    //
+    //         </div>
+    //
+    //     )
+    // }
 
-    }else{
-        return (
-
-            <div id={"body"}>
-                <Menu/>
-                <Table/>
-
-            </div>
-
-
-
-
-        )
-    }
-
-
-
-    // return (
-    //
-    //
-    //
-    //     <div id={"body"}>
-    //         <Menu/>
-    //
-    //         <Table/>
-    //
-    //         <Form/>
-    //
-    //
-    //     </div>
-    //
-    //
-    //
-    //
-    // )
 }
 
 

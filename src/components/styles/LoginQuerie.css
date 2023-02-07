@@ -1,0 +1,251 @@
+
+#LoginBody{
+    height: 58.8em;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+}
+
+#LoginContainer1{
+    position: relative;
+    top: 5em;
+    right: 30em;
+    width: 30%;
+    /*bottom: 6em;*/
+    background: rgba(0,0,0, 0.4);
+}
+
+#WelcomeBack1{
+    position: relative;
+    left: 19em;
+    top: 4.5em;
+    width: 27%;
+    font-size: 4em;
+    z-index: 1;
+}
+
+#ToCoinBot1{
+    position: relative;
+    left: 20em;
+    top: 4.5em;
+    width: 22%;
+    font-size: 4em;
+    z-index: 1;
+}
+
+
+
+#LoginButton{
+    position: relative;
+    left: 14em;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0px;
+    background-color: #0677cf;
+    position: relative;
+    width: 7em;
+    height: 3em;
+    bottom: 0.5em;
+}
+
+#LoginTitle{
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+
+@media (max-width: 1670px) {
+
+
+
+    #LoginContainer1{
+        position: relative;
+        top: 5em;
+        right: 28em;
+        width: 35%;
+        background: rgba(0,0,0, 0.4);
+    }
+
+    #WelcomeBack1{
+        position: relative;
+        left: 16em;
+        top: 4.5em;
+        width: 29%;
+        font-size: 4em;
+        z-index: 1;
+    }
+
+    #ToCoinBot1{
+        position: relative;
+        left: 17em;
+        top: 4.5em;
+        width: 25%;
+        font-size: 4em;
+        z-index: 1;
+    }
+
+    #LoginButton{
+        position: relative;
+        left: 15em;
+    }
+
+
+}
+
+
+@media (max-width: 1645px) {
+
+
+
+    #LoginContainer1{
+        position: relative;
+        top: 5em;
+        right: 28em;
+        width: 35%;
+        /*bottom: 6em;*/
+        background: rgba(0,0,0, 0.4);
+    }
+
+    #WelcomeBack1{
+        position: relative;
+        left: 16em;
+        top: 4.5em;
+        width: 29%;
+        font-size: 4em;
+
+
+        /*color: white;*/
+        z-index: 1;
+    }
+
+    #ToCoinBot1{
+        position: relative;
+        left: 17em;
+        top: 4.5em;
+        width: 25%;
+        font-size: 4em;
+
+        /*color: w;*/
+        z-index: 1;
+    }
+
+    #LoginButton{
+        position: relative;
+        left: 13em;
+    }
+
+}
+
+
+
+
+@media (max-width: 1473px) {
+
+
+    #LoginContainer1 {
+        position: relative;
+        top: 5em;
+        right: 10em;
+        width: 35%;
+        /*bottom: 6em;*/
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    #WelcomeBack1 {
+        position: relative;
+        left: 18em;
+        top: 5em;
+        width: 29%;
+        font-size: 3em;
+        z-index: 1;
+    }
+
+    #ToCoinBot1 {
+        position: relative;
+        left: 19em;
+        top: 4.9em;
+        width: 25%;
+        font-size: 3em;
+        z-index: 1;
+    }
+
+    #LoginButton{
+        position: relative;
+        left: 11em;
+    }
+}
+
+
+
+
+@media (max-width: 1273px) {
+
+
+    #LoginContainer1 {
+        position: relative;
+        top: 5em;
+        right: 10em;
+        width: 35%;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    #WelcomeBack1 {
+        position: relative;
+        left: 18em;
+        top: 5em;
+        width: 29%;
+        font-size: 3em;
+        z-index: 1;
+    }
+
+    #ToCoinBot1 {
+        position: relative;
+        left: 19em;
+        top: 4.9em;
+        width: 25%;
+        font-size: 3em;
+        z-index: 1;
+    }
+
+    #LoginButton{
+        position: relative;
+        left: 10em;
+    }
+}
+
+
+@media (max-width: 1183px) {
+
+
+    #LoginContainer1 {
+        position: relative;
+        top: 5em;
+        right: 10em;
+        width: 35%;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    #WelcomeBack1 {
+        position: relative;
+        left: 16em;
+        top: 5em;
+        width: 29%;
+        font-size: 3em;
+        z-index: 1;
+    }
+
+    #ToCoinBot1 {
+        position: relative;
+        left: 17em;
+        top: 4.9em;
+        width: 25%;
+        font-size: 3em;
+        z-index: 1;
+    }
+
+    #LoginButton{
+        position: relative;
+        left: 9em;
+    }
+}
+
+

@@ -2,23 +2,38 @@
     position: relative;
     left: 2em;
     width: 20em;
-    bottom: 15em;
+    bottom: 50em;
+    /*box-shadow: 5px 8px 21px 0px rgba(0,0,0,0.75);*/
+    /*-webkit-box-shadow: 5px 8px 21px 0px rgba(0,0,0,0.75);*/
+    /*-moz-box-shadow: 5px 8px 21px 0px rgba(0,0,0,0.75);*/
+    /*box-shadow: 5px 8px 21px 0px rgba(0,0,0,0.75);*/
+    /*-webkit-box-shadow: 5px 8px 21px 0px rgba(0,0,0,0.75);*/
+    /*-moz-box-shadow: 5px 8px 21px 0px rgba(0,0,0,0.75);*/
+
+
 }
 
-#Form {
+#FormCoins {
     box-shadow: 5px 8px 21px 0px rgba(0,0,0,0.75);
     -webkit-box-shadow: 5px 8px 21px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 5px 8px 21px 0px rgba(0,0,0,0.75);
+
 }
 
-#text{
+
+#FormTitle{
+    font-family: -apple-system;
+    text-align: center;
+}
+
+/*#text{
     position: relative;
     bottom: 40em;
     left: 6em;
     font-family: -apple-system;
 
 
-}
+}*/
 
 a:link {
     text-decoration: none;
@@ -36,8 +51,6 @@ a:visited {
     position: relative;
     bottom: 40em;
     height: 0;
-
-
 }
 
 #SaveButtonForm {

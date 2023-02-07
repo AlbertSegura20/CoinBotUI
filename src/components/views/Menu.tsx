@@ -6,6 +6,7 @@ import "../styles/Queries.css"
 import "bootstrap/dist/css/bootstrap.min.css";
 // import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import {Link} from "react-router-dom";
 
 const Menu = () => {
 
@@ -13,10 +14,10 @@ const Menu = () => {
 
         <>
             <div className={"bg-dark"} id={"Menu"}>
-                <h2 className={"text-center"}>CoinBot 1.0</h2>
+                <h2 className={"text-center"}> <Link to={"/"} style={{ color: '#FFF' }}>CoinBot 1.0</Link></h2>
                 <br/>
                 <hr/>
-                <h4>Coins</h4>
+                <h4><Link to={"/Coins"} style={{ color: '#FFF' }}>Coins</Link></h4>
                 <hr/>
 
                 <h4>Margins</h4>
