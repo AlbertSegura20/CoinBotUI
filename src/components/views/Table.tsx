@@ -3,7 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Menu.css";
 import "../styles/Table.css"
 import "../styles/Queries.css"
-const Table = () => {
+import Coin from "../types/Coin";
+import coin from "../types/Coin";
+
+const Table = ({Coins, handleEdit} : {Coins:Coin[]|undefined, handleEdit:any}) => {
 
     return (
 
@@ -28,59 +31,26 @@ const Table = () => {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
 
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
+                        {Coins?.map((coin:coin) => (
 
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-
-                </tr>
-
-
+                            <tr onDoubleClick={() => handleEdit(coin)}>
+                                <td>{coin.name}</td>
+                                <td>{coin.symbol}</td>
+                                <td>{coin.coinAmount}</td>
+                                <td>{coin.minimumUsdToBuy}</td>
+                                <td>{coin.assignedUsd}</td>
+                                <td>{coin.availableUsd}</td>
+                                <td>{coin.assignedUsdToBuyInOffer}</td>
+                                <td>{coin.minimumUsdToSell}</td>
+                                <td>{coin.assignedUsdToSellInOffer}</td>
+                                <td>{coin.userName}</td>
+                                <td>{coin.lastOrderPrice}</td>
+                                <td>{coin.lastBuyOrderPrice}</td>
+                                <td>{coin.lastSellOrderPrice}</td>
+                                <td>{coin.isTrading}</td>
+                            </tr>
+                        ))}
                 </tbody>
             </table>
         
