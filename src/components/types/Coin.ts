@@ -1,4 +1,4 @@
-interface Coin {
+interface ICoin {
     name: string
     symbol: string,
     coinAmount: number,
@@ -15,4 +15,4 @@ interface Coin {
     isTrading: boolean
 }
 
-export default Coin;
+export default ICoin;

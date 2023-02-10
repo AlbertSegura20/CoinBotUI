@@ -4,9 +4,10 @@ import "../styles/Menu.css";
 import "../styles/Table.css"
 import "../styles/Queries.css"
 import Coin from "../types/Coin";
-import coin from "../types/Coin";
+// import Coin from "../types/Coin";
+// import coin from "../types/Coin";
 
-const Table = ({Coins, handleEdit} : {Coins:Coin[]|undefined, handleEdit:any}) => {
+const Table = ({Coins, handleModalLoadCoinInfo} : {Coins:Coin[]|undefined, handleModalLoadCoinInfo:any}) => {
 
     return (
 
@@ -32,9 +33,11 @@ const Table = ({Coins, handleEdit} : {Coins:Coin[]|undefined, handleEdit:any}) =
                 </thead>
                 <tbody>
 
-                        {Coins?.map((coin:coin) => (
+                        {Coins?.map((coin) => (
 
-                            <tr onDoubleClick={() => handleEdit(coin)}>
+                            // data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                            // <tr onDoubleClick={() => handleModalLoadCoinInfo(coin)}>
+                            <tr onDoubleClick={() => handleModalLoadCoinInfo(coin)} data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 <td>{coin.name}</td>
                                 <td>{coin.symbol}</td>
                                 <td>{coin.coinAmount}</td>

@@ -1,15 +1,23 @@
 import React, {useEffect, useState} from "react";
 import Menu from "./Menu";
-import Form from "./Form";
 import Table from "./Table";
 import Coin from "../types/Coin";
 import axios from "axios";
-import coin from "../types/Coin";
+// import coin from "../types/Coin";
+import Modal from "./Modal";
 
 const Coins = ():JSX.Element => {
 
     const [coin, setCoins] = useState<Coin[]>()
-    const [edit, setEdit] = useState<boolean>(true);
+    // const [edit, setEdit] = useState<boolean>(true);
+    const [name, setName] = useState<string>();
+    const [minimumUsdToBuy, setMinimumUsdToBuy] = useState<number>();
+    const [assignedUsd, setAssignedUsd] = useState<number>();
+    const [assignedUsdToBuyInOffer, setAssignedUsdToBuyInOffer] = useState<number>();
+    const [minimumUsdToSell, setMinimumUsdToSell] = useState<number>();
+    const [assignedUsdToSellInOffer, setAssignedUsdToSellInOffer] = useState<number>();
+
+
     // http://localhost:8080/api/coins
 
     useEffect(() => {
@@ -21,10 +29,33 @@ const Coins = ():JSX.Element => {
 
         }, [])
 
-    const handleEdit = (data:coin):void => {
-        setEdit(true);
+    const handleModalLoadCoinInfo = (data:Coin):void => {
+        // setEdit(true);
+        setName(data.name);
+        setAssignedUsd(data.assignedUsd);
+        setMinimumUsdToBuy(data.minimumUsdToBuy);
+        setAssignedUsdToBuyInOffer(data.assignedUsdToBuyInOffer);
+        setMinimumUsdToSell(data.minimumUsdToSell);
+        setAssignedUsdToSellInOffer(data.assignedUsdToSellInOffer);
+
+
     }
 
+
+    return (
+
+        <div id={"body"}>
+            <Menu/>
+            <Table Coins={coin} handleModalLoadCoinInfo={handleModalLoadCoinInfo}/>
+            <h2 data-bs-toggle="modal" data-bs-target="#staticBackdrop">Holaaaa</h2>
+
+            <Modal coinName={name!} minimumUsdToSell={minimumUsdToSell!} assignedUsd={assignedUsd!}
+                   assignedUsdToBuyInOffer={assignedUsdToBuyInOffer!} assignedUsdToSellInOffer={assignedUsdToSellInOffer!}
+                   minimumUsdToBuy={minimumUsdToBuy!}/>
+
+        </div>
+    )
+    /*
     if(edit){
 
 
@@ -32,31 +63,12 @@ const Coins = ():JSX.Element => {
 
             <div id={"body"}>
                 <Menu/>
-                {/*<Form/>*/}
+                {/!*<Form/>*!/}
 
 
+                <h2 data-bs-toggle="modal" data-bs-target="#staticBackdrop">Holaaaa</h2>
 
-                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Launch static backdrop modal
-                </button>
-
-                <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="staticBackdropLabel">Modal title</h5>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div className="modal-body">
-                                asdasd
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" className="btn btn-primary">Understood</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Modal/>
 
             </div>
 
@@ -68,12 +80,12 @@ const Coins = ():JSX.Element => {
 
             <div id={"body"}>
                 <Menu/>
-                <Table Coins={coin} handleEdit={handleEdit}/>
+                <Table Coins={coin} handleCoinEdit={handleCoinEdit}/>
 
             </div>
 
         )
-    }
+    }*/
 
 }
 

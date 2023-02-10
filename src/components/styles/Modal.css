@@ -1,0 +1,6 @@
+#Modal-Form__SaveButton, #Modal-Form__CloseButton{
+    border: 0;
+    box-shadow: none;
+    border-radius: 0px;
+    width: 5em;
+}
