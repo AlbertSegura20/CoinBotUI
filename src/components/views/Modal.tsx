@@ -1,11 +1,11 @@
-import React from "react";
+import React, {ChangeEvent, ChangeEventHandler, FormEvent, FormEventHandler} from "react";
 import "../styles/Modal.css";
-import coin from "../types/Coin";
-import Coin from "../types/Coin";
 
-const Modal = ({coinName, assignedUsd, minimumUsdToBuy, assignedUsdToBuyInOffer, minimumUsdToSell, assignedUsdToSellInOffer}
+const Modal = ({coinName, assignedUsd, minimumUsdToBuy, assignedUsdToBuyInOffer, minimumUsdToSell, assignedUsdToSellInOffer, isTrading,
+                   handleChangeCoinInfo, handleSubmitCoinInfo}
                    : {coinName:string, assignedUsd:number, minimumUsdToBuy:number, assignedUsdToBuyInOffer:number,
-                    minimumUsdToSell:number, assignedUsdToSellInOffer:number}):JSX.Element => {
+                    minimumUsdToSell:number, handleChangeCoinInfo:ChangeEventHandler, assignedUsdToSellInOffer:number,
+                    isTrading:boolean, handleSubmitCoinInfo:FormEventHandler}):JSX.Element => {
 
     return (
         <div>
@@ -21,57 +21,55 @@ const Modal = ({coinName, assignedUsd, minimumUsdToBuy, assignedUsdToBuyInOffer,
 
 
 
-                            <form id={"Modal-Form"}>
-                                {/*<div className={"form-floating"}>*/}
-                                {/*    <input placeholder={"Add your FirstName"} type={"text"} name={"firstName"} required*/}
-                                {/*           className={"form-control"} autoComplete={"off"}/><br/>*/}
-                                {/*    <label htmlFor={"firstName"}>User</label>*/}
-                                {/*</div>*/}
-
+                            <form id={"Modal-Form"} onSubmit={handleSubmitCoinInfo}>
 
                                 <div className={"form-floating"}>
                                     <input placeholder={"assignedUsd"} type={"number"} name={"assignedUsd"} required
-                                           className={"form-control"} autoComplete={"off"}/><br/>
+                                           className={"form-control"} autoComplete={"off"} defaultValue={assignedUsd} onChange={handleChangeCoinInfo}/><br/>
                                     <label htmlFor={"assignedUsd"}>Assigned Usd</label>
                                 </div>
 
                                 <div className={"form-floating"}>
                                     <input placeholder={"minimumUsdToBuy"} type={"number"} name={"minimumUsdToBuy"} required
-                                           className={"form-control"} autoComplete={"off"}/><br/><br/>
-                                    <label htmlFor={"minimumUsdToBuy"} >MinimumUsd To Buy</label>
+                                           className={"form-control"} autoComplete={"off"} defaultValue={minimumUsdToBuy} onChange={handleChangeCoinInfo}/><br/><br/>
+                                    <label htmlFor={"minimumUsdToBuy"} >Minimum Usd To Buy</label>
                                 </div>
 
                                 <div className={"form-floating"}>
                                     <input placeholder={"minimumUsdToSell"} type={"number"} name={"minimumUsdToSell"} required
-                                           className={"form-control"} autoComplete={"off"}/><br/><br/>
+                                           className={"form-control"} autoComplete={"off"} defaultValue={minimumUsdToSell} onChange={handleChangeCoinInfo}/><br/><br/>
                                     <label htmlFor={"minimumUsdToSell"} >Minimum Usd To Sell</label>
                                 </div>
 
 
                                 <div className={"form-floating"}>
                                     <input placeholder={"assignedUsdToBuyInOffer"} type={"number"} name={"assignedUsdToBuyInOffer"} required
-                                           className={"form-control"} autoComplete={"off"}/><br/><br/>
-                                    <label htmlFor={"assignedUsdToBuyInOffer"} >AssignedUsd To Buy In Offer</label>
+                                           className={"form-control"} autoComplete={"off"} defaultValue={assignedUsdToBuyInOffer} onChange={handleChangeCoinInfo}/><br/><br/>
+                                    <label htmlFor={"assignedUsdToBuyInOffer"} >Assigned Usd To Buy In Offer</label>
                                 </div>
 
 
                                 <div className={"form-floating"}>
                                     <input placeholder={"assignedUsdToSellInOffer"} type={"number"} name={"assignedUsdToSellInOffer"} required
-                                           className={"form-control"} autoComplete={"off"}/><br/>
-                                    <label htmlFor={"assignedUsdToSellInOffer"}>AssignedUsd To Sell In Offer</label>
+                                           className={"form-control"} autoComplete={"off"} defaultValue={assignedUsdToSellInOffer} onChange={handleChangeCoinInfo}/><br/>
+                                    <label htmlFor={"assignedUsdToSellInOffer"}>Assigned Usd To Sell In Offer</label>
                                 </div>
 
-                                {/*<button className="btn btn-primary" id={"SaveButtonForm"} type={"submit"}>Save</button>*/}
+                                {/*<div>*/}
+                                {/*    <select className="form-select" aria-label="Select an option">*/}
+                                {/*        <option selected>Trading</option>*/}
+                                {/*        <option value="1">True</option>*/}
+                                {/*        <option value="2">False</option>*/}
+                                {/*    </select>*/}
+                                {/*</div>*/}
+
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-dark" data-bs-dismiss="modal" id={"Modal-Form__CloseButton"}>Close</button>
+                                    <button type="submit" className="btn btn-success" id={"Modal-Form__SaveButton"} data-bs-dismiss="modal">Save</button>
+                                </div>
                             </form>
-
-
-
-
                         </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-dark" data-bs-dismiss="modal" id={"Modal-Form__CloseButton"}>Close</button>
-                            <button type="button" className="btn btn-success" id={"Modal-Form__SaveButton"}>Save</button>
-                        </div>
+
                     </div>
                 </div>
             </div>

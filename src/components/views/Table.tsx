@@ -3,11 +3,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Menu.css";
 import "../styles/Table.css"
 import "../styles/Queries.css"
-import Coin from "../types/Coin";
+import Icoin from "../types/Icoin";
 // import Coin from "../types/Coin";
 // import coin from "../types/Coin";
 
-const Table = ({Coins, handleModalLoadCoinInfo} : {Coins:Coin[]|undefined, handleModalLoadCoinInfo:any}) => {
+const Table = ({Coins, handleModalLoadCoinInfo} : {Coins:Icoin[]|undefined, handleModalLoadCoinInfo:any}) => {
 
     return (
 
@@ -33,11 +33,11 @@ const Table = ({Coins, handleModalLoadCoinInfo} : {Coins:Coin[]|undefined, handl
                 </thead>
                 <tbody>
 
-                        {Coins?.map((coin) => (
+                        {Coins?.map((coin, index) => (
 
                             // data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                             // <tr onDoubleClick={() => handleModalLoadCoinInfo(coin)}>
-                            <tr onDoubleClick={() => handleModalLoadCoinInfo(coin)} data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <tr key={index} onClick={() => handleModalLoadCoinInfo(coin)} data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
                                 <td>{coin.name}</td>
                                 <td>{coin.symbol}</td>
                                 <td>{coin.coinAmount}</td>
