@@ -4,8 +4,7 @@ import "../styles/Menu.css";
 import "../styles/Table.css"
 import "../styles/Queries.css"
 import Icoin from "../types/Icoin";
-// import Coin from "../types/Coin";
-// import coin from "../types/Coin";
+// im
 
 const Table = ({Coins, handleModalLoadCoinInfo} : {Coins:Icoin[]|undefined, handleModalLoadCoinInfo:any}) => {
 
@@ -34,8 +33,6 @@ const Table = ({Coins, handleModalLoadCoinInfo} : {Coins:Icoin[]|undefined, hand
 
                         {Coins?.map((coin, index) => (
 
-                            // data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                            // <tr onDoubleClick={() => handleModalLoadCoinInfo(coin)}>
                             <tr key={index} onClick={() => handleModalLoadCoinInfo(coin)} data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
                                 <td>{coin.name}</td>
                                 <td>{coin.symbol}</td>

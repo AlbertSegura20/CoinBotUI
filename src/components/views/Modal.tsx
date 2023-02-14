@@ -5,7 +5,7 @@ const Modal = ({coinName, assignedUsd, minimumUsdToBuy, assignedUsdToBuyInOffer,
                    handleChangeCoinInfo, handleSubmitCoinInfo}
                    : {coinName:string, assignedUsd:number, minimumUsdToBuy:number, assignedUsdToBuyInOffer:number,
                     minimumUsdToSell:number, handleChangeCoinInfo:ChangeEventHandler, assignedUsdToSellInOffer:number,
-                    isTrading:boolean, handleSubmitCoinInfo:FormEventHandler}):JSX.Element => {
+                    isTrading:any, handleSubmitCoinInfo:FormEventHandler}):JSX.Element => {
 
     return (
         <div>
@@ -55,13 +55,11 @@ const Modal = ({coinName, assignedUsd, minimumUsdToBuy, assignedUsdToBuyInOffer,
                                     <label htmlFor={"assignedUsdToSellInOffer"}>Assigned Usd To Sell In Offer</label>
                                 </div>
 
-                                {/*<div>*/}
-                                {/*    <select className="form-select" aria-label="Select an option">*/}
-                                {/*        <option selected>Trading</option>*/}
-                                {/*        <option value="1">True</option>*/}
-                                {/*        <option value="2">False</option>*/}
-                                {/*    </select>*/}
-                                {/*</div>*/}
+                                <div className="form-check">
+                                    <input className="form-check-input" name={"isTrading"} type="checkbox" defaultChecked={isTrading} onChange={handleChangeCoinInfo} id="flexCheckChecked"/>
+                                    <label htmlFor={"isTrading"}>Trading</label>
+                                </div>
+
 
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-dark" data-bs-dismiss="modal" id={"Modal-Form__CloseButton"}>Close</button>

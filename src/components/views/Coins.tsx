@@ -9,7 +9,6 @@ import Modal from "./Modal";
 const Coins = ():JSX.Element => {
 
     const [coin, setCoins] = useState<Icoin[]>()
-    // const [edit, setEdit] = useState<boolean>(true);
     const [id, setId] = useState<number>();
     const [name, setName] = useState<string>();
     const [minimumUsdToBuy, setMinimumUsdToBuy] = useState<number>();
@@ -27,11 +26,15 @@ const Coins = ():JSX.Element => {
         (async () => {
             const data = await axios.get("/api/coins");
            setCoins(data.data);
-           // console.log(data.data);
+
         })();
+        }, []);
 
-        }, [])
 
+    const getAllCoins = async ():Promise<void> => {
+        const data = await axios.get("/api/coins");
+        setCoins(data.data);
+    }
     const handleModalLoadCoinInfo = (data:Icoin):void => {
 
         setId(data.id);
@@ -58,6 +61,9 @@ const Coins = ():JSX.Element => {
             setAssignedUsdToSellInOffer(target.value);
         if(target.name === "assignedUsdToBuyInOffer")
             setAssignedUsdToBuyInOffer(target.value);
+        if(target.name === "isTrading")
+            setIstrading(target.checked);
+
     }
 
     const handleSubmitCoinInfo = async (e:any):Promise<void> => {
@@ -70,9 +76,13 @@ const Coins = ():JSX.Element => {
             minimumUsdToBuy: minimumUsdToBuy,
             minimumUsdToSell: minimumUsdToSell,
             assignedUsdToBuyInOffer: assignedUsdToBuyInOffer,
-            assignedUsdToSellInOffer: assignedUsdToSellInOffer
+            assignedUsdToSellInOffer: assignedUsdToSellInOffer,
+            isTrading: isTrading
         }
-        await axios.put("/api/coins",  objectCoin);
+        const response = await axios.put("/api/coins",  objectCoin);
+        getAllCoins();
+        console.log(response, objectCoin);
+
     }
 
 
@@ -88,37 +98,6 @@ const Coins = ():JSX.Element => {
 
         </div>
     )
-    /*
-    if(edit){
-
-
-        return (
-
-            <div id={"body"}>
-                <Menu/>
-                {/!*<Form/>*!/}
-
-
-                <h2 data-bs-toggle="modal" data-bs-target="#staticBackdrop">Holaaaa</h2>
-
-                <Modal/>
-
-            </div>
-
-        )
-
-
-    }else{
-        return (
-
-            <div id={"body"}>
-                <Menu/>
-                <Table Coins={coin} handleCoinEdit={handleCoinEdit}/>
-
-            </div>
-
-        )
-    }*/
 
 }
 
