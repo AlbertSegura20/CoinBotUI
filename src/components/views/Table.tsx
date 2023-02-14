@@ -28,7 +28,6 @@ const Table = ({Coins, handleModalLoadCoinInfo} : {Coins:Icoin[]|undefined, hand
                     <th scope="col-auto" id={"tableProperties"}>LastBuyOrderPrice</th>
                     <th scope="col-auto" id={"tableProperties"}>LastSellOrderPrice</th>
                     <th scope="col-auto" id={"tableProperties"}>IsTrading</th>
-
                 </tr>
                 </thead>
                 <tbody>
