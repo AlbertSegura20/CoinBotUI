@@ -33,8 +33,8 @@ const Coins = ():JSX.Element => {
         }, [])
 
     const handleModalLoadCoinInfo = (data:Icoin):void => {
-        // setEdit(true);
 
+        setId(data.id);
         setName(data.name);
         setAssignedUsd(data.assignedUsd);
         setMinimumUsdToBuy(data.minimumUsdToBuy);
@@ -47,7 +47,7 @@ const Coins = ():JSX.Element => {
 
     const handleChangeCoinInfo = ({target}:{target:any}):void => {
 
-        // setId()
+
         if(target.name === "assignedUsd")
             setAssignedUsd(target.value);
         if(target.name === "minimumUsdToBuy")
@@ -63,10 +63,9 @@ const Coins = ():JSX.Element => {
     const handleSubmitCoinInfo = async (e:any):Promise<void> => {
         e.target.reset();
         e.preventDefault();
-        console.log(assignedUsd, minimumUsdToBuy, minimumUsdToSell, assignedUsdToSellInOffer, assignedUsdToBuyInOffer);
 
         const objectCoin = {
-            // id: "1",
+            id: id,
             assignedUsd: assignedUsd,
             minimumUsdToBuy: minimumUsdToBuy,
             minimumUsdToSell: minimumUsdToSell,
@@ -75,7 +74,7 @@ const Coins = ():JSX.Element => {
         }
 
 
-        axios.put("", {id: 1});
+        axios.put("", {id: objectCoin.id});
 
     }
 

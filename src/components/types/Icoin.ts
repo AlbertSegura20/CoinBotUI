@@ -1,5 +1,6 @@
 interface ICoin {
-    name: string
+    id: number,
+    name: string,
     symbol: string,
     coinAmount: number,
     minimumUsdToBuy: number,
