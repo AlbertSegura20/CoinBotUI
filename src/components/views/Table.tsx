@@ -42,10 +42,10 @@ const Table = ({Coins, handleModalLoadCoinInfo} : {Coins:Icoin[]|undefined, hand
                                 <td>{coin.symbol}</td>
                                 <td>{coin.coinAmount}</td>
                                 <td>{coin.minimumUsdToBuy}</td>
+                                <td>{coin.minimumUsdToSell}</td>
                                 <td>{coin.assignedUsd}</td>
                                 <td>{coin.availableUsd}</td>
                                 <td>{coin.assignedUsdToBuyInOffer}</td>
-                                <td>{coin.minimumUsdToSell}</td>
                                 <td>{coin.assignedUsdToSellInOffer}</td>
                                 <td>{coin.userName}</td>
                                 <td>{coin.lastOrderPrice}</td>

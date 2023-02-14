@@ -73,8 +73,7 @@ const Coins = ():JSX.Element => {
             assignedUsdToSellInOffer: assignedUsdToSellInOffer
         }
 
-
-        axios.put("", {id: objectCoin.id});
+        await axios.put("/api/coins", objectCoin);
 
     }
 
