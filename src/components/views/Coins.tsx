@@ -10,6 +10,7 @@ const Coins = ():JSX.Element => {
 
     const [coin, setCoins] = useState<Icoin[]>()
     // const [edit, setEdit] = useState<boolean>(true);
+    const [id, setId] = useState<number>();
     const [name, setName] = useState<string>();
     const [minimumUsdToBuy, setMinimumUsdToBuy] = useState<number>();
     const [assignedUsd, setAssignedUsd] = useState<number>();
@@ -45,6 +46,8 @@ const Coins = ():JSX.Element => {
     }
 
     const handleChangeCoinInfo = ({target}:{target:any}):void => {
+
+        // setId()
         if(target.name === "assignedUsd")
             setAssignedUsd(target.value);
         if(target.name === "minimumUsdToBuy")
@@ -57,10 +60,22 @@ const Coins = ():JSX.Element => {
             setAssignedUsdToBuyInOffer(target.value);
     }
 
-    const handleSubmitCoinInfo = (e:any):void => {
+    const handleSubmitCoinInfo = async (e:any):Promise<void> => {
         e.target.reset();
         e.preventDefault();
         console.log(assignedUsd, minimumUsdToBuy, minimumUsdToSell, assignedUsdToSellInOffer, assignedUsdToBuyInOffer);
+
+        const objectCoin = {
+            // id: "1",
+            assignedUsd: assignedUsd,
+            minimumUsdToBuy: minimumUsdToBuy,
+            minimumUsdToSell: minimumUsdToSell,
+            assignedUsdToBuyInOffer: assignedUsdToBuyInOffer,
+            assignedUsdToSellInOffer: assignedUsdToSellInOffer
+        }
+
+
+        axios.put("", {id: 1});
 
     }
 
