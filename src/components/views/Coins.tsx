@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
 import Menu from "./Menu";
-import Table from "./Table";
 import Icoin from "../types/Icoin";
 import axios from "axios";
-// import coin from "../types/Coin";
 import Modal from "./Modal";
+import TableCoin from "./TableCoin";
+import {toast, ToastContainer} from "react-toastify";
+import NotificationSuccess from "../notification/Notification";
+import Notification from "../notification/Notification";
 
 const Coins = ():JSX.Element => {
 
@@ -81,21 +83,37 @@ const Coins = ():JSX.Element => {
         }
         const response = await axios.put("/api/coins",  objectCoin);
         getAllCoins();
-        console.log(response, objectCoin);
+        const notification = new Notification();
+        notification.UpdateCoinNotification(response.data);
 
     }
+
+
 
 
     return (
 
         <div id={"body"}>
             <Menu/>
-            <Table Coins={coin} handleModalLoadCoinInfo={handleModalLoadCoinInfo}/>
+
+            <TableCoin Coins={coin} handleModalLoadCoinInfo={handleModalLoadCoinInfo}/>
             <Modal coinName={name!} minimumUsdToSell={minimumUsdToSell!} assignedUsd={assignedUsd!}
                    assignedUsdToBuyInOffer={assignedUsdToBuyInOffer!} assignedUsdToSellInOffer={assignedUsdToSellInOffer!}
                    minimumUsdToBuy={minimumUsdToBuy!} isTrading={isTrading!} handleChangeCoinInfo={handleChangeCoinInfo}
                    handleSubmitCoinInfo={handleSubmitCoinInfo}/>
 
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
         </div>
     )
 
