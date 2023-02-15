@@ -47,7 +47,7 @@ const Table = ({Coins, handleModalLoadCoinInfo} : {Coins:Icoin[]|undefined, hand
                     <td>{coin.lastOrderPrice}</td>
                     <td>{coin.lastBuyOrderPrice}</td>
                     <td>{coin.lastSellOrderPrice}</td>
-                    <td>{coin.isTrading}</td>
+                    <td>{String(coin.isTrading)}</td>
                 </tr>
             ))}
             </tbody>

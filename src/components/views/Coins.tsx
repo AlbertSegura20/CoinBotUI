@@ -4,8 +4,7 @@ import Icoin from "../types/Icoin";
 import axios from "axios";
 import Modal from "./Modal";
 import TableCoin from "./TableCoin";
-import {toast, ToastContainer} from "react-toastify";
-import NotificationSuccess from "../notification/Notification";
+import {ToastContainer} from "react-toastify";
 import Notification from "../notification/Notification";
 
 const Coins = ():JSX.Element => {
@@ -81,6 +80,7 @@ const Coins = ():JSX.Element => {
             assignedUsdToSellInOffer: assignedUsdToSellInOffer,
             isTrading: isTrading
         }
+
         const response = await axios.put("/api/coins",  objectCoin);
         getAllCoins();
         const notification = new Notification();
