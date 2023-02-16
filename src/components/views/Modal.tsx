@@ -1,9 +1,9 @@
 import React, {ChangeEvent, ChangeEventHandler, FormEventHandler} from "react";
 import "../styles/Modal.css";
 
-const Modal = ({checkBox, coinName, assignedUsd, minimumUsdToBuy, assignedUsdToBuyInOffer, minimumUsdToSell, assignedUsdToSellInOffer, isTrading,
+const Modal = ({checkBox, id, coinName, assignedUsd, minimumUsdToBuy, assignedUsdToBuyInOffer, minimumUsdToSell, assignedUsdToSellInOffer, isTrading,
                    handleChangeCoinInfo, handleSubmitCoinInfo}
-                   : {checkBox: ChangeEventHandler, coinName:string,  assignedUsd:number, minimumUsdToBuy:number,
+                   : {checkBox: ChangeEventHandler, id:number, coinName:string,  assignedUsd:number, minimumUsdToBuy:number,
                     assignedUsdToBuyInOffer:number, minimumUsdToSell:number, handleChangeCoinInfo:ChangeEventHandler,
                     assignedUsdToSellInOffer:number, isTrading:any, handleSubmitCoinInfo:FormEventHandler}):JSX.Element => {
 
@@ -56,12 +56,12 @@ const Modal = ({checkBox, coinName, assignedUsd, minimumUsdToBuy, assignedUsdToB
                                 </div>
 
                                 <div className="form-check">
-                                    <input className="form-check-input" name={"isTrading"} type="checkbox"  onChange={checkBox} id="flexCheckChecked"/>
-                                    <label htmlFor={"isTrading"}>Trading</label>
+                                    {/*<input className="form-check-input" name={"isTrading"} type="checkbox"  onChange={checkBox} id="flexCheckChecked"/>*/}
+                                    {/*<label htmlFor={"isTrading"}>Trading</label>*/}
 
-                                   {/* <input className="form-check-input" type="checkbox" value={id}
-                                           id={"check" + id} onChange={checkBox} defaultChecked={isTrading}/>
-                                    <label htmlFor={"isTrading"}>Trading</label>*/}
+                                    <input className="form-check-input" type="checkbox" value={id}
+                                           id={"check-" + id} onChange={checkBox}/>
+                                    <label htmlFor={"isTrading"}>Trading</label>
 
                                 </div>
 

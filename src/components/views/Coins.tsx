@@ -9,7 +9,9 @@ import Notification from "../notification/Notification";
 
 const Coins = ():JSX.Element => {
 
-    const [coin, setCoins] = useState<Icoin[]>()
+    const [coin, setCoins] = useState<Icoin[]>();
+
+
     const [id, setId] = useState<number>();
     const [name, setName] = useState<string>();
     const [minimumUsdToBuy, setMinimumUsdToBuy] = useState<number>();
@@ -52,11 +54,24 @@ const Coins = ():JSX.Element => {
 
     const checkBox = (event:any) => {
         const object = event.target;
-        const checkx = event.target.checked;
-        const checkBox = document.querySelector('#check' + id);
-        const coinsData = coin;
+        let checkID = document.querySelector('#' + object.id) as HTMLInputElement;
 
-        console.log(checkx);
+        coin?.forEach((item) => {
+            if(item.id === Number(checkID.value)){
+                item.isTrading = checkID.checked;
+                setIstrading(item.isTrading);
+                console.log(item);
+            }
+        })
+
+
+
+
+        // const checkx = event.target.checked;
+        // const checkBox = document.querySelector('#check' + id);
+        // const coinsData = coin;
+        //
+        // console.log(checkx);
 
     }
 
@@ -96,9 +111,12 @@ const Coins = ():JSX.Element => {
             isTrading: isTrading
         }
 
-        console.log(objectCoin.isTrading);
+        console.log("===================================== ANTES DE ENVIAR")
+        console.log(objectCoin);
 
         const response = await axios.put("/api/coins",  objectCoin);
+
+
          getAllCoins();
         const notification = new Notification();
         notification.UpdateCoinNotification(response.data);
@@ -114,7 +132,8 @@ const Coins = ():JSX.Element => {
             <Menu/>
 
             <TableCoin Coins={coin} handleModalLoadCoinInfo={handleModalLoadCoinInfo}/>
-            <Modal checkBox={checkBox}  coinName={name!} minimumUsdToSell={minimumUsdToSell!} assignedUsd={assignedUsd!}
+
+            <Modal checkBox={checkBox} id={id!}  coinName={name!} minimumUsdToSell={minimumUsdToSell!} assignedUsd={assignedUsd!}
                    assignedUsdToBuyInOffer={assignedUsdToBuyInOffer!} assignedUsdToSellInOffer={assignedUsdToSellInOffer!}
                    minimumUsdToBuy={minimumUsdToBuy!} isTrading={isTrading!} handleChangeCoinInfo={handleChangeCoinInfo}
                    handleSubmitCoinInfo={handleSubmitCoinInfo}/>
