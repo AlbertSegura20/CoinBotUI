@@ -22,8 +22,6 @@ const Coins = ():JSX.Element => {
     const [isTrading, setIstrading] = useState<boolean>();
 
 
-    // http://localhost:8080/api/coins
-
     useEffect(() => {
 
         (async () => {
@@ -36,7 +34,6 @@ const Coins = ():JSX.Element => {
 
     const getAllCoins = async ():Promise<void> => {
         const data = await axios.get("/api/coins");
-        console.log(data.data);
         setCoins(data.data);
     }
     const handleModalLoadCoinInfo = (data:Icoin):void => {
@@ -58,23 +55,17 @@ const Coins = ():JSX.Element => {
 
         coin?.forEach((item) => {
             if(item.id === Number(checkID.value)){
+
                 item.isTrading = checkID.checked;
                 setIstrading(item.isTrading);
+
+
                 console.log(item);
             }
-        })
+        });
 
-
-
-
-        // const checkx = event.target.checked;
-        // const checkBox = document.querySelector('#check' + id);
-        // const coinsData = coin;
-        //
-        // console.log(checkx);
 
     }
-
 
 
     const handleChangeCoinInfo = ({target}:{target:any}):void => {
@@ -111,13 +102,12 @@ const Coins = ():JSX.Element => {
             isTrading: isTrading
         }
 
-        console.log("===================================== ANTES DE ENVIAR")
         console.log(objectCoin);
 
         const response = await axios.put("/api/coins",  objectCoin);
 
 
-         getAllCoins();
+        getAllCoins();
         const notification = new Notification();
         notification.UpdateCoinNotification(response.data);
 
@@ -137,11 +127,6 @@ const Coins = ():JSX.Element => {
                    assignedUsdToBuyInOffer={assignedUsdToBuyInOffer!} assignedUsdToSellInOffer={assignedUsdToSellInOffer!}
                    minimumUsdToBuy={minimumUsdToBuy!} isTrading={isTrading!} handleChangeCoinInfo={handleChangeCoinInfo}
                    handleSubmitCoinInfo={handleSubmitCoinInfo}/>
-
-         {/*   <Modal radioButton={radioButton} coinName={name!} minimumUsdToSell={minimumUsdToSell!} assignedUsd={assignedUsd!}
-                   assignedUsdToBuyInOffer={assignedUsdToBuyInOffer!} assignedUsdToSellInOffer={assignedUsdToSellInOffer!}
-                   minimumUsdToBuy={minimumUsdToBuy!} isTrading={isTrading!} handleChangeCoinInfo={handleChangeCoinInfo}
-                   handleSubmitCoinInfo={handleSubmitCoinInfo}/>*/}
 
             <ToastContainer
                 position="top-right"
