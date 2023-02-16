@@ -3,9 +3,9 @@ import "../styles/Modal.css";
 
 const Modal = ({checkBox, id, coinName, assignedUsd, minimumUsdToBuy, assignedUsdToBuyInOffer, minimumUsdToSell, assignedUsdToSellInOffer, isTrading,
                    handleChangeCoinInfo, handleSubmitCoinInfo}
-                   : {checkBox: ChangeEventHandler, id:number, coinName:string,  assignedUsd:number, minimumUsdToBuy:number,
+                   : {checkBox: any, id:number, coinName:string,  assignedUsd:number, minimumUsdToBuy:number,
                     assignedUsdToBuyInOffer:number, minimumUsdToSell:number, handleChangeCoinInfo:ChangeEventHandler,
-                    assignedUsdToSellInOffer:number, isTrading:any, handleSubmitCoinInfo:FormEventHandler}):JSX.Element => {
+                    assignedUsdToSellInOffer:number, isTrading:boolean, handleSubmitCoinInfo:FormEventHandler}):JSX.Element => {
 
     return (
         <div>
@@ -59,8 +59,8 @@ const Modal = ({checkBox, id, coinName, assignedUsd, minimumUsdToBuy, assignedUs
                                     {/*<input className="form-check-input" name={"isTrading"} type="checkbox"  onChange={checkBox} id="flexCheckChecked"/>*/}
                                     {/*<label htmlFor={"isTrading"}>Trading</label>*/}
 
-                                    <input className="form-check-input" type="checkbox" value={id}
-                                           id={"check-" + id} onChange={checkBox}/>
+                                    <input className="form-check-input" type="checkbox" value={id} defaultChecked={isTrading}
+                                           id={"check-" + id} onClick={checkBox}/>
                                     <label htmlFor={"isTrading"}>Trading</label>
 
                                 </div>
