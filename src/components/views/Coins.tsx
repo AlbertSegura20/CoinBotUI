@@ -34,6 +34,7 @@ const Coins = ():JSX.Element => {
 
     const getAllCoins = async ():Promise<void> => {
         const data = await axios.get("/api/coins");
+        console.log(data.data);
         setCoins(data.data);
     }
     const handleModalLoadCoinInfo = (data:Icoin):void => {
@@ -49,6 +50,18 @@ const Coins = ():JSX.Element => {
 
     }
 
+    const checkBox = (event:any) => {
+        const object = event.target;
+        const checkx = event.target.checked;
+        const checkBox = document.querySelector('#check' + id);
+        const coinsData = coin;
+
+        console.log(checkx);
+
+    }
+
+
+
     const handleChangeCoinInfo = ({target}:{target:any}):void => {
 
 
@@ -62,10 +75,12 @@ const Coins = ():JSX.Element => {
             setAssignedUsdToSellInOffer(target.value);
         if(target.name === "assignedUsdToBuyInOffer")
             setAssignedUsdToBuyInOffer(target.value);
-        if(target.name === "isTrading")
-            setIstrading(target.checked);
+       /* if(target.name === "isTrading")
+            setIstrading(target.value);*/
+
 
     }
+
 
     const handleSubmitCoinInfo = async (e:any):Promise<void> => {
         e.target.reset();
@@ -81,8 +96,10 @@ const Coins = ():JSX.Element => {
             isTrading: isTrading
         }
 
+        console.log(objectCoin.isTrading);
+
         const response = await axios.put("/api/coins",  objectCoin);
-        getAllCoins();
+         getAllCoins();
         const notification = new Notification();
         notification.UpdateCoinNotification(response.data);
 
@@ -97,10 +114,15 @@ const Coins = ():JSX.Element => {
             <Menu/>
 
             <TableCoin Coins={coin} handleModalLoadCoinInfo={handleModalLoadCoinInfo}/>
-            <Modal coinName={name!} minimumUsdToSell={minimumUsdToSell!} assignedUsd={assignedUsd!}
+            <Modal checkBox={checkBox}  coinName={name!} minimumUsdToSell={minimumUsdToSell!} assignedUsd={assignedUsd!}
                    assignedUsdToBuyInOffer={assignedUsdToBuyInOffer!} assignedUsdToSellInOffer={assignedUsdToSellInOffer!}
                    minimumUsdToBuy={minimumUsdToBuy!} isTrading={isTrading!} handleChangeCoinInfo={handleChangeCoinInfo}
                    handleSubmitCoinInfo={handleSubmitCoinInfo}/>
+
+         {/*   <Modal radioButton={radioButton} coinName={name!} minimumUsdToSell={minimumUsdToSell!} assignedUsd={assignedUsd!}
+                   assignedUsdToBuyInOffer={assignedUsdToBuyInOffer!} assignedUsdToSellInOffer={assignedUsdToSellInOffer!}
+                   minimumUsdToBuy={minimumUsdToBuy!} isTrading={isTrading!} handleChangeCoinInfo={handleChangeCoinInfo}
+                   handleSubmitCoinInfo={handleSubmitCoinInfo}/>*/}
 
             <ToastContainer
                 position="top-right"
