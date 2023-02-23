@@ -1,9 +1,9 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/Menu.css";
-import "../styles/Table.css"
-import "../styles/Queries.css"
-import Icoin from "../types/Icoin";
+import "../../styles/Menu.css";
+import "../../styles/Table.css"
+import "../../styles/Queries.css"
+import Icoin from "../../types/Icoin";
 
 
 const Table = ({Coins, handleModalLoadCoinInfo} : {Coins:Icoin[]|undefined, handleModalLoadCoinInfo:any}) => {

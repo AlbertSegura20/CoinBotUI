@@ -1,17 +1,17 @@
-import React, {useEffect, useState} from "react";
-import Menu from "./Menu";
-import Icoin from "../types/Icoin";
+import React, {FormEventHandler, useEffect, useState} from "react";
+import Menu from "../Menu";
+import Icoin from "../../types/Icoin";
 import axios from "axios";
 import Modal from "./Modal";
-import TableCoin from "./TableCoin";
+import TableCoin from "./CoinsTable";
 import {ToastContainer} from "react-toastify";
-import Notification from "../notification/Notification";
+import Notification from "../../notification/Notification";
+import CoinsTable from "./CoinsTable";
+
 
 const Coins = ():JSX.Element => {
 
     const [coin, setCoins] = useState<Icoin[]>();
-
-
     const [id, setId] = useState<number>();
     const [name, setName] = useState<string>();
     const [minimumUsdToBuy, setMinimumUsdToBuy] = useState<number>();
@@ -49,18 +49,14 @@ const Coins = ():JSX.Element => {
 
     }
 
-    const checkBox = (event:any) => {
+    const checkBox = (event:any):void => {
         const object = event.target;
         let checkID = document.querySelector('#' + object.id) as HTMLInputElement;
 
         coin?.forEach((item) => {
             if(item.id === Number(checkID.value)){
-
                 item.isTrading = checkID.checked;
                 setIstrading(item.isTrading);
-
-
-                console.log(item);
             }
         });
 
@@ -81,9 +77,6 @@ const Coins = ():JSX.Element => {
             setAssignedUsdToSellInOffer(target.value);
         if(target.name === "assignedUsdToBuyInOffer")
             setAssignedUsdToBuyInOffer(target.value);
-       /* if(target.name === "isTrading")
-            setIstrading(target.value);*/
-
 
     }
 
@@ -102,11 +95,7 @@ const Coins = ():JSX.Element => {
             isTrading: isTrading
         }
 
-        console.log(objectCoin);
-
         const response = await axios.put("/api/coins",  objectCoin);
-
-
         getAllCoins();
         const notification = new Notification();
         notification.UpdateCoinNotification(response.data);
@@ -121,8 +110,7 @@ const Coins = ():JSX.Element => {
         <div id={"body"}>
             <Menu/>
 
-            <TableCoin Coins={coin} handleModalLoadCoinInfo={handleModalLoadCoinInfo}/>
-
+            <CoinsTable Coins={coin} handleModalLoadCoinInfo={handleModalLoadCoinInfo}/>
             <Modal checkBox={checkBox} id={id!}  coinName={name!} minimumUsdToSell={minimumUsdToSell!} assignedUsd={assignedUsd!}
                    assignedUsdToBuyInOffer={assignedUsdToBuyInOffer!} assignedUsdToSellInOffer={assignedUsdToSellInOffer!}
                    minimumUsdToBuy={minimumUsdToBuy!} isTrading={isTrading!} handleChangeCoinInfo={handleChangeCoinInfo}

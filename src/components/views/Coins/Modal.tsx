@@ -1,11 +1,13 @@
-import React, {ChangeEvent, ChangeEventHandler, FormEventHandler} from "react";
-import "../styles/Modal.css";
+import React, {ChangeEvent, ChangeEventHandler, FormEventHandler, MouseEventHandler} from "react";
+import "../../styles/Modal.css";
 
-const Modal = ({id, coinName, assignedUsd, minimumUsdToBuy, assignedUsdToBuyInOffer, minimumUsdToSell, assignedUsdToSellInOffer, isTrading,
-                   handleChangeCoinInfo, handleSubmitCoinInfo, checkBox}
-                   : {id:number, coinName:string,  assignedUsd:number, minimumUsdToBuy:number,
+
+const Modal = ({checkBox, id, coinName, assignedUsd, minimumUsdToBuy, assignedUsdToBuyInOffer, minimumUsdToSell, assignedUsdToSellInOffer, isTrading,
+                   handleChangeCoinInfo, handleSubmitCoinInfo}
+                   : {checkBox: MouseEventHandler, id:number, coinName:string,  assignedUsd:number, minimumUsdToBuy:number,
                     assignedUsdToBuyInOffer:number, minimumUsdToSell:number, handleChangeCoinInfo:ChangeEventHandler,
-                    assignedUsdToSellInOffer:number, isTrading:any, checkBox: any  ,handleSubmitCoinInfo:FormEventHandler}):JSX.Element => {
+                    assignedUsdToSellInOffer:number, isTrading:boolean, handleSubmitCoinInfo:FormEventHandler}):JSX.Element => {
+
 
     return (
         <div>
@@ -55,11 +57,11 @@ const Modal = ({id, coinName, assignedUsd, minimumUsdToBuy, assignedUsdToBuyInOf
                                     <label htmlFor={"assignedUsdToSellInOffer"}>Assigned Usd To Sell In Offer</label>
                                 </div>
 
-
-                                    <input className="form-check-input" type="checkbox" value={id}
+                                <div>
+                                    <input className="form-check-input" type="checkbox" value={id} defaultChecked={isTrading}
                                            id={"check-" + id} onClick={checkBox}/>
                                     <label htmlFor={"isTrading"}>Trading</label>
-
+                                </div>
 
 
                                 <div className="modal-footer">
