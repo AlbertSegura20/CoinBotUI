@@ -1,14 +1,17 @@
-import React, {useEffect, useState} from "react";
-import Menu from "./Menu";
-import Table from "./Table";
-import Icoin from "../types/Icoin";
+import React, {FormEventHandler, useEffect, useState} from "react";
+import Menu from "../Menu";
+import Icoin from "../../types/Icoin";
 import axios from "axios";
-// import coin from "../types/Coin";
 import Modal from "./Modal";
+import TableCoin from "./CoinsTable";
+import {ToastContainer} from "react-toastify";
+import Notification from "../../notification/Notification";
+import CoinsTable from "./CoinsTable";
+
 
 const Coins = ():JSX.Element => {
 
-    const [coin, setCoins] = useState<Icoin[]>()
+    const [coin, setCoins] = useState<Icoin[]>();
     const [id, setId] = useState<number>();
     const [name, setName] = useState<string>();
     const [minimumUsdToBuy, setMinimumUsdToBuy] = useState<number>();
@@ -18,8 +21,6 @@ const Coins = ():JSX.Element => {
     const [assignedUsdToSellInOffer, setAssignedUsdToSellInOffer] = useState<number>();
     const [isTrading, setIstrading] = useState<boolean>();
 
-
-    // http://localhost:8080/api/coins
 
     useEffect(() => {
 
@@ -48,6 +49,21 @@ const Coins = ():JSX.Element => {
 
     }
 
+    const checkBox = (event:any):void => {
+        const object = event.target;
+        let checkID = document.querySelector('#' + object.id) as HTMLInputElement;
+
+        coin?.forEach((item) => {
+            if(item.id === Number(checkID.value)){
+                item.isTrading = checkID.checked;
+                setIstrading(item.isTrading);
+            }
+        });
+
+
+    }
+
+
     const handleChangeCoinInfo = ({target}:{target:any}):void => {
 
 
@@ -61,10 +77,9 @@ const Coins = ():JSX.Element => {
             setAssignedUsdToSellInOffer(target.value);
         if(target.name === "assignedUsdToBuyInOffer")
             setAssignedUsdToBuyInOffer(target.value);
-        if(target.name === "isTrading")
-            setIstrading(target.checked);
 
     }
+
 
     const handleSubmitCoinInfo = async (e:any):Promise<void> => {
         e.target.reset();
@@ -79,23 +94,40 @@ const Coins = ():JSX.Element => {
             assignedUsdToSellInOffer: assignedUsdToSellInOffer,
             isTrading: isTrading
         }
+
         const response = await axios.put("/api/coins",  objectCoin);
         getAllCoins();
-        console.log(response, objectCoin);
+        const notification = new Notification();
+        notification.UpdateCoinNotification(response.data);
 
     }
+
+
 
 
     return (
 
         <div id={"body"}>
             <Menu/>
-            <Table Coins={coin} handleModalLoadCoinInfo={handleModalLoadCoinInfo}/>
-            <Modal coinName={name!} minimumUsdToSell={minimumUsdToSell!} assignedUsd={assignedUsd!}
+
+            <CoinsTable Coins={coin} handleModalLoadCoinInfo={handleModalLoadCoinInfo}/>
+            <Modal checkBox={checkBox} id={id!}  coinName={name!} minimumUsdToSell={minimumUsdToSell!} assignedUsd={assignedUsd!}
                    assignedUsdToBuyInOffer={assignedUsdToBuyInOffer!} assignedUsdToSellInOffer={assignedUsdToSellInOffer!}
                    minimumUsdToBuy={minimumUsdToBuy!} isTrading={isTrading!} handleChangeCoinInfo={handleChangeCoinInfo}
                    handleSubmitCoinInfo={handleSubmitCoinInfo}/>
 
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
         </div>
     )
 

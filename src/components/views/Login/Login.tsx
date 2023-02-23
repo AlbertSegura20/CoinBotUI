@@ -1,7 +1,7 @@
 import React from "react";
-import "../styles/Login.css";
-import "../styles/Queries.css";
-import "../styles/LoginQuerie.css";
+import "../../styles/Login.css";
+import "../../styles/Queries.css";
+import "../../styles/LoginQuerie.css";
 
 class Login extends React.Component<any, any>{
 

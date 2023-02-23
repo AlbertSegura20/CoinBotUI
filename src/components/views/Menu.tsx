@@ -14,16 +14,16 @@ const Menu = () => {
 
         <>
             <div className={"bg-dark"} id={"Menu"}>
-                <h2 className={"text-center"}> <Link to={"/"} style={{ color: '#FFF' }}>CoinBot 1.0</Link></h2>
+                <h2 className={"text-center"}> <Link to={"/"} style={{ color: '#FFF', textDecoration: "none"  }}>CoinBot 1.0</Link></h2>
                 <br/>
                 <hr/>
-                <h4><Link to={"/Coins"} style={{ color: '#FFF' }}>Coins</Link></h4>
+                <h4><Link to={"/coins"} style={{ color: '#FFF', textDecoration: "none" }}>Coins</Link></h4>
                 <hr/>
 
-                <h4>Margins</h4>
+                <h4><Link to={"/margins"} style={{ color: '#FFF', textDecoration: "none" }}>Margins</Link></h4>
                 <hr/>
 
-                <h4>Orders</h4>
+                <h4><Link to={"/orders"} style={{ color: '#FFF', textDecoration: "none" }}>Orders</Link></h4>
                 <hr/>
                 {/*<h4 className="dropdown" data-bs-toggle="dropdown" aria-expanded="false">Manage*/}
                 {/*</h4>*/}
