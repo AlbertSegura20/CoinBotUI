@@ -12,7 +12,7 @@ const Modal = ({checkBox, id, coinName, assignedUsd, minimumUsdToBuy, assignedUs
     return (
         <div>
 
-            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div className="modal fade" id="coinModalStaticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -66,7 +66,7 @@ const Modal = ({checkBox, id, coinName, assignedUsd, minimumUsdToBuy, assignedUs
 
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-dark" data-bs-dismiss="modal" id={"Modal-Form__CloseButton"}>Close</button>
-                                    <button type="submit" className="btn btn-success" id={"Modal-Form__SaveButton"} data-bs-dismiss="modal">Save</button>
+                                    <button type="submit" className="btn btn-success" id={"Modal-Form__SaveButton"}>Save</button>
                                 </div>
                             </form>
                         </div>

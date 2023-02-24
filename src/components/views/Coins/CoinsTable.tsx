@@ -33,7 +33,7 @@ const Table = ({Coins, handleModalLoadCoinInfo} : {Coins:Icoin[]|undefined, hand
 
             {Coins?.map((coin, index) => (
 
-                <tr key={index} onClick={() => handleModalLoadCoinInfo(coin)} data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
+                <tr key={index} onClick={() => handleModalLoadCoinInfo(coin)} data-bs-toggle="modal" data-bs-target="#coinModalStaticBackdrop" >
                     <td>{coin.name}</td>
                     <td>{coin.symbol}</td>
                     <td>{coin.coinAmount}</td>
