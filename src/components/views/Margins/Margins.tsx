@@ -50,6 +50,7 @@ const Margins = ():JSX.Element => {
 
        if(target.name === "selectOrder"){
            setOrderTypeModal(target.value);
+
        }
 
    }
@@ -61,7 +62,23 @@ const Margins = ():JSX.Element => {
     const handleSubmitCreateMarginModal = (e:any):void => {
         e.target.reset();
         e.preventDefault();
-        console.log(coinID, value, orderTypeModal);
+        handleSaveNewMarginModal();
+
+    }
+
+    const handleSaveNewMarginModal = async ():Promise<void> => {
+
+        const obj = {
+            coinID: coinID,
+            value: value,
+            orderType: orderTypeModal
+        }
+
+        const response = await axios.post("/api/margins", obj);
+        console.log(response.data);
+    }
+
+    const handleDeleteMarginModal = async ():Promise<void> => {
 
     }
 

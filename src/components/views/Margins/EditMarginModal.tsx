@@ -27,7 +27,7 @@ const EditMarginModal = ({name, value, orderType}: {name:string, value:number, o
 
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-dark" data-bs-dismiss="modal" id={"Modal-Form__CloseButton"}>Close</button>
-                                <button type="button" className="btn btn-danger" data-bs-dismiss="modal" id={"Modal-Form__CloseButton"}>Delete</button>
+                                <button type="button" className="btn btn-danger" data-bs-dismiss="modal" id={"Modal-Form__CloseButton"} >Delete</button>
                                 <button type="submit" className="btn btn-success" id={"Modal-Form__SaveButton"} data-bs-dismiss="modal">Save</button>
                             </div>
                         </form>

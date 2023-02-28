@@ -22,7 +22,7 @@ const NewMarginModal = ({CoinsName, orderTypeArray, handleCreateMarginModal, han
                             <select className="form-select" aria-label="Default select example" name={"selectCoin"} onChange={handleCreateMarginModal} required>
                                 <option value="">Select a Coin</option>
                             {CoinsName?.map((coin, index) => (
-                                    <option defaultValue={coin.id} key={index}>{coin.name}</option>
+                                    <option value={coin.id} key={index}>{coin.name}</option>
                             ))}
                             </select>
 
@@ -31,7 +31,7 @@ const NewMarginModal = ({CoinsName, orderTypeArray, handleCreateMarginModal, han
                             <select className="form-select" aria-label="Default select example" name={"selectOrder"} onChange={handleCreateMarginModal} required>
                                 <option value="">Order Type</option>
                             {orderTypeArray?.map((order, index) => (
-                                <option defaultValue={order} key={index}>{order}</option>
+                                <option value={order} key={index}>{order}</option>
 
                             ))}
                             </select>
