@@ -90,7 +90,8 @@ const Margins = ():JSX.Element => {
         const obj = {
             id: idMargin
         }
-        const response = await axios.delete("/api/margins", {data: obj.id});
+        console.log(obj);
+        const response = await axios.delete("/api/margins", {data: obj});
         notification.DeleteMarginNotification(response.data);
         console.log(obj);
         await getAllData();
