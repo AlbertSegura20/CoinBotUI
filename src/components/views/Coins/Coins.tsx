@@ -1,9 +1,8 @@
-import React, {FormEventHandler, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import Menu from "../Menu";
 import Icoin from "../../types/Icoin";
 import axios from "axios";
 import Modal from "./Modal";
-import TableCoin from "./CoinsTable";
 import {ToastContainer} from "react-toastify";
 import Notification from "../../notification/Notification";
 import CoinsTable from "./CoinsTable";
@@ -96,7 +95,7 @@ const Coins = ():JSX.Element => {
         }
 
         const response = await axios.put("/api/coins",  objectCoin);
-        getAllCoins();
+        await getAllCoins();
         const notification = new Notification();
         notification.UpdateCoinNotification(response.data);
 

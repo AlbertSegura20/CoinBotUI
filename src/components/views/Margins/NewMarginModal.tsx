@@ -1,5 +1,4 @@
 import React, {ChangeEventHandler, FormEventHandler} from "react";
-import IMargin from "../../types/IMargin";
 import ICoin from "../../types/Icoin";
 
 const NewMarginModal = ({CoinsName, orderTypeArray, handleCreateMarginModal, handleSubmitCreateMarginModal, handleChangeCreateModal}
@@ -39,7 +38,7 @@ const NewMarginModal = ({CoinsName, orderTypeArray, handleCreateMarginModal, han
 
                             <br/><br/>
                             <div className={"form-floating"}>
-                                <input placeholder={"value"} type={"number"} name={"value"} onChange={handleChangeCreateModal} required
+                                <input placeholder={"value"} type={"number"} step={".01"} name={"value"} onChange={handleChangeCreateModal} required
                                        className={"form-control"} autoComplete={"off"}/><br/>
                                 <label htmlFor={"value"}>Value</label>
                             </div>
