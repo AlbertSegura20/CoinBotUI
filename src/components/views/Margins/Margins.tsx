@@ -20,7 +20,6 @@ const Margins = ():JSX.Element => {
     const [coinNames, setCoinNames] = useState<ICoin[]>();
     const [orderTypeArray] = useState<string[]>(["SELL", "BUY"]);
     const [orderTypeModal, setNewOrderTypeModal] = useState<string>();
-    // const [editMargin, setEditMargin] = useState<number>();
     const [idMargin, setIdMargin] = useState<number>();
     const notification = new Notification();
 
@@ -36,6 +35,12 @@ const Margins = ():JSX.Element => {
         })();
 
     }, [])
+
+    const getAllData = async ():Promise<void> => {
+        const data = await axios.get("/api/margins");
+        setMargins(data.data);
+    }
+
 
     //EDIT MARGIN
 
@@ -74,20 +79,21 @@ const Margins = ():JSX.Element => {
             name: name,
             value: value,
             orderType: orderType
-            // margin: editMargin
         }
         console.log(obj);
 
-        const response = await axios.post("/api/margins", obj);
+        const response = await axios.put("/api/margins", obj);
         notification.UpdateMarginNotification(response.data);
+        await getAllData();
     }
     const handleDeleteMarginModal = async ():Promise<void> => {
         const obj = {
             id: idMargin
         }
-        const response = await axios.post("/api/margins", obj);
+        const response = await axios.delete("/api/margins", {data: obj.id});
         notification.DeleteMarginNotification(response.data);
         console.log(obj);
+        await getAllData();
     }
 
     const handleSubmitEditMarginModal = (e:any):void => {
@@ -126,7 +132,8 @@ const Margins = ():JSX.Element => {
     const handleSubmitCreateMarginModal = async (e:any):Promise<void> => {
         e.target.reset();
         e.preventDefault();
-       await handleSaveNewMarginModal();
+        await handleSaveNewMarginModal();
+        await getAllData();
         //Verificar si no hay problema con que el metodo submit sea asincrono
 
     }
