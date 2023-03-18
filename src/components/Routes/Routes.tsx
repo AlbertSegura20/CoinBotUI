@@ -1,6 +1,7 @@
-import React from "react";
+import React, {StrictMode} from "react";
 import {createBrowserRouter} from "react-router-dom";
-import Home from "../views/Home";
+// import Home from "../views/Home";
+import Home from "../views/Home/Home";
 import Login from "../views/Login/Login";
 import Coins from "../views/Coins/Coins";
 import Margins from "../views/Margins/Margins";
@@ -11,20 +12,20 @@ const Routes = createBrowserRouter([
 
     {
         path:"/",
-        element:<Home/>
+        element:<StrictMode><Home/></StrictMode>
     },
 
     {
         path:"/login",
-        element:<Login/>
+        element:<StrictMode><Login/></StrictMode>
     },
     {
         path:"/coins",
-        element: <Coins/>
+        element: <StrictMode><Coins/></StrictMode>
     },
     {
         path:"/margins",
-        element: <Margins/>
+        element: <StrictMode><Margins/></StrictMode>
     },
     {
         path:"/orders",

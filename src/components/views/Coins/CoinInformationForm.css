@@ -1,0 +1,86 @@
+:root{
+    --bg-light-white: #E8E8E8;
+    --bg-medium-purple: #9370DB;
+    /*#B8B8B8*/
+}
+
+.desktop-section{
+    height: 92vh;
+}
+
+.container-form-desktop{
+    height: 90vh;
+}
+
+.coins-Section{
+    background: var(--bg-light-white);
+
+}
+
+
+.container-form{
+    flex-wrap: wrap;
+
+}
+
+.container-form-items{
+    width: 95%;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px -1px rgba(0,0,0,0.62);
+    -webkit-box-shadow: 2px 2px 5px -1px rgba(0,0,0,0.62);
+    -moz-box-shadow: 2px 2px 5px -1px rgba(0,0,0,0.62);
+
+
+}
+
+.button-form{
+    width: 20%;
+}
+
+.external-select-container{
+    background: #fff;
+    width: 95%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px -1px rgba(0,0,0,0.62);
+    -webkit-box-shadow: 2px 2px 5px -1px rgba(0,0,0,0.62);
+    -moz-box-shadow: 2px 2px 5px -1px rgba(0,0,0,0.62);
+
+}
+
+.internal-select-container{
+    width: 30%;
+}
+
+#form-properties{
+    word-break: break-all;
+
+}
+
+@media screen and (min-width: 768px) {
+
+    .mobile-section{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .desktop-section{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 992px) and (min-width: 768px){
+    #form-properties{
+        font-size: 73%;
+    }
+    input[placeholder]{
+        font-size: 73%;
+    }
+}
+
+
+
+
+

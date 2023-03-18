@@ -1,0 +1,19 @@
+:root{
+    --bg-light-white: #E8E8E8;
+    --bg-medium-purple: #9370DB;
+    /*#B8B8B8*/
+}
+
+
+
+.nav-item{
+    padding-right: 30px;
+}
+
+.navbar-toggler:focus{
+    box-shadow: none;
+    border: none;
+}
+.navbar-toggler{
+    border: none;
+}

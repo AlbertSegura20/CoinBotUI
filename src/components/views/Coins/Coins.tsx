@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from "react";
-import Menu from "../Menu";
+import React, {StrictMode, useEffect, useState} from "react";
+import Menu from "../Menu/Menu";
 import Icoin from "../../types/Icoin";
 import axios from "axios";
-import Modal from "./Modal";
 import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import Notification from "../../notification/Notification";
-import CoinsTable from "./CoinsTable";
+import CoinInformationForm from "./CoinInformationForm";
+import EditCoinModal from "./EditCoinModal";
 
 
 const Coins = ():JSX.Element => {
@@ -19,6 +20,12 @@ const Coins = ():JSX.Element => {
     const [minimumUsdToSell, setMinimumUsdToSell] = useState<number>();
     const [assignedUsdToSellInOffer, setAssignedUsdToSellInOffer] = useState<number>();
     const [isTrading, setIstrading] = useState<boolean>();
+    // const [loadCoin, setLoadCoin] = useState<Icoin>();
+    const [loadCoin, setLoadCoin] = useState<Icoin | any>();
+    const [show, setShow] = useState<boolean>(false);
+
+
+
 
 
     useEffect(() => {
@@ -37,6 +44,15 @@ const Coins = ():JSX.Element => {
     }
     const handleModalLoadCoinInfo = (data:Icoin):void => {
 
+        if(data === undefined){
+            new Notification().UndefinedNotification(false);
+            return;
+        }
+
+        if(data.id === undefined){
+                new Notification().UndefinedNotification(false);
+                return;
+        }
         setId(data.id);
         setName(data.name);
         setAssignedUsd(data.assignedUsd);
@@ -45,6 +61,7 @@ const Coins = ():JSX.Element => {
         setMinimumUsdToSell(data.minimumUsdToSell);
         setAssignedUsdToSellInOffer(data.assignedUsdToSellInOffer);
         setIstrading(data.isTrading);
+        handleShowModal();
 
     }
 
@@ -64,7 +81,6 @@ const Coins = ():JSX.Element => {
 
 
     const handleChangeCoinInfo = ({target}:{target:any}):void => {
-
 
         if(target.name === "assignedUsd")
             setAssignedUsd(target.value);
@@ -95,25 +111,105 @@ const Coins = ():JSX.Element => {
         }
 
         const response = await axios.put("/api/coins",  objectCoin);
+
         await getAllCoins();
         const notification = new Notification();
         notification.UpdateCoinNotification(response.data);
+        handleCloseModal();
+    }
+
+    const handleSelectCoin =  (data:any):void => {
+
+        // console.log(data.target.value);
+
+
+        if(data.target.value){
+            const coinID = Number(data.target.value);
+            const result = coin?.filter((item) => item.id === coinID);
+            const arrayResult = result?.shift();
+            setLoadCoin(arrayResult);
+        }else{
+            // console.log("false");
+
+            // const demo = document.getElementsByName("MinimunUSDToBuy") as NodeListOf<HTMLInputElement>;
+            // console.log(demo[0].value);
+            // if(demo[0].value !== ""){
+            //     demo[0].value = "";
+            // }
+
+
+            const obj = {
+                id: undefined,
+                name: undefined,
+                symbol: undefined,
+                coinAmount: undefined,
+                minimumUsdToBuy: undefined,
+                assignedUsd: undefined,
+                availableUsd: undefined,
+                assignedUsdToBuyInOffer: undefined,
+                minimumUsdToSell: undefined,
+                assignedUsdToSellInOffer: undefined,
+                userName: undefined,
+                lastOrderPrice: undefined,
+                lastBuyOrderPrice: undefined,
+                lastSellOrderPrice: undefined,
+                isTrading: undefined
+            }
+
+            setLoadCoin(obj);
+        }
 
     }
 
-
+    const handleCloseModal = () => {
+        setShow(false);
+    };
+    const handleShowModal = () => setShow(true);
 
 
     return (
 
-        <div id={"body"}>
+        // <div id={"body"}>
+        //     <Menu/>
+        //
+        //     <CoinsTable Coins={coin} handleModalLoadCoinInfo={handleModalLoadCoinInfo}/>
+        //     <Modal checkBox={checkBox} id={id!}  coinName={name!} minimumUsdToSell={minimumUsdToSell!} assignedUsd={assignedUsd!}
+        //            assignedUsdToBuyInOffer={assignedUsdToBuyInOffer!} assignedUsdToSellInOffer={assignedUsdToSellInOffer!}
+        //            minimumUsdToBuy={minimumUsdToBuy!} isTrading={isTrading!} handleChangeCoinInfo={handleChangeCoinInfo}
+        //            handleSubmitCoinInfo={handleSubmitCoinInfo}/>
+        //
+        //     <ToastContainer
+        //         position="top-right"
+        //         autoClose={5000}
+        //         hideProgressBar={false}
+        //         newestOnTop={false}
+        //         closeOnClick
+        //         rtl={false}
+        //         pauseOnFocusLoss
+        //         draggable
+        //         pauseOnHover
+        //         theme="dark"
+        //     />
+        // </div>
+
+
+        <StrictMode>
             <Menu/>
 
-            <CoinsTable Coins={coin} handleModalLoadCoinInfo={handleModalLoadCoinInfo}/>
-            <Modal checkBox={checkBox} id={id!}  coinName={name!} minimumUsdToSell={minimumUsdToSell!} assignedUsd={assignedUsd!}
-                   assignedUsdToBuyInOffer={assignedUsdToBuyInOffer!} assignedUsdToSellInOffer={assignedUsdToSellInOffer!}
-                   minimumUsdToBuy={minimumUsdToBuy!} isTrading={isTrading!} handleChangeCoinInfo={handleChangeCoinInfo}
-                   handleSubmitCoinInfo={handleSubmitCoinInfo}/>
+            <EditCoinModal show={show} handleCloseModal={handleCloseModal} handleShowModal={handleShowModal}
+                           checkBox={checkBox} id={id!} minimumUsdToSell={minimumUsdToSell!} assignedUsd={assignedUsd!}
+                           assignedUsdToBuyInOffer={assignedUsdToBuyInOffer!} assignedUsdToSellInOffer={assignedUsdToSellInOffer!}
+                           minimumUsdToBuy={minimumUsdToBuy!} isTrading={isTrading!} handleChangeCoinInfo={handleChangeCoinInfo}
+                           handleSubmitCoinInfo={handleSubmitCoinInfo}/>
+            {/*<CoinsTable Coins={coin} handleModalLoadCoinInfo={handleModalLoadCoinInfo}/>*/}
+            <CoinInformationForm handleModalLoadCoinInfo={handleModalLoadCoinInfo} Coins={coin} name={name!} assignedUsd={assignedUsd!} minimumUsdToSell={minimumUsdToSell!}
+                                 assignedUsdToBuyInOffer={assignedUsdToBuyInOffer!} assignedUsdToSellInOffer={assignedUsdToSellInOffer!}
+                                 minimumUsdToBuy={minimumUsdToBuy!} handleSelectCoin={handleSelectCoin} CoinData={loadCoin!} handleShowModal={handleShowModal}/>
+            {/*<Modal checkBox={checkBox} id={id!}  coinName={name!} minimumUsdToSell={minimumUsdToSell!} assignedUsd={assignedUsd!}*/}
+            {/*       assignedUsdToBuyInOffer={assignedUsdToBuyInOffer!} assignedUsdToSellInOffer={assignedUsdToSellInOffer!}*/}
+            {/*       minimumUsdToBuy={minimumUsdToBuy!} isTrading={isTrading!} handleChangeCoinInfo={handleChangeCoinInfo}*/}
+            {/*       handleSubmitCoinInfo={handleSubmitCoinInfo}/>*/}
+
 
             <ToastContainer
                 position="top-right"
@@ -127,7 +223,8 @@ const Coins = ():JSX.Element => {
                 pauseOnHover
                 theme="dark"
             />
-        </div>
+
+        </StrictMode>
     )
 
 }

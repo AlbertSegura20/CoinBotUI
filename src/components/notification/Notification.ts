@@ -131,6 +131,25 @@ export class Notification {
     }
 
 
+    public UndefinedNotification = (success:any) => {
+        switch (success) {
+            case false:
+                toast.error("Please, Select a Coin", {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+
+        }
+
+    }
+
+
 }
 
 

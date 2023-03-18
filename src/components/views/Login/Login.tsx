@@ -1,86 +1,48 @@
 import React from "react";
-import "../../styles/Login.css";
-import "../../styles/Queries.css";
-import "../../styles/LoginQuerie.css";
+import "./Login.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+
 
 class Login extends React.Component<any, any>{
 
     render() {
         return (
 
-
            <>
+               <section className={"login-page"}>
 
-               <div  id={"LoginBody"}>
-                   <h1 id={"WelcomeBack1"}>Welcome Back </h1>
-                   <h1 id={"ToCoinBot1"}>To CoinBot</h1>
+               <div className={"container-fluid"}>
 
+                   <div className={"d-flex justify-content-center vh-100 align-items-center"}>
 
+                       <form className={"border border-light pt-4 rounded-3 d-flex flex-column form"} style={{width:"450px", height:"300px"}}>
+                           <h2 className={"text-white text-center pb-3 login"}>Sign in </h2>
 
-                   <div id={"backColor1"}>
-
-                   </div>
-
-                   <div className={"container-fluid"} id={"LoginContainer1"}>
-                       <h1 id={"LoginTitle"}>Login</h1>
-
-                       <form id={"Login"}>
-                           <div className={"form-floating"}>
-                               <input placeholder={"Add your FirstName"} type={"text"} name={"firstName"} required
-                                      className={"form-control"} autoComplete={"off"}/><br/>
-                               <label htmlFor={"firstName"}>User</label>
+                           <div className="form-floating  mb-3 text-white">
+                               <input type="email" className="form-control bg-transparent text-white fs-5" id="floatingInput" placeholder="name@example.com"/>
+                               <label htmlFor="floatingInput">Email address</label>
                            </div>
 
-                           <div className={"form-floating"}>
-                               <input placeholder={"Add your LastName"} type={"password"} name={"lastName"} required
-                                      className={"form-control"} autoComplete={"off"}/><br/>
-                               <label htmlFor={"lastName"}>Password</label>
+                           <div className="form-floating text-white">
+                               <input type="password" className="form-control mb-2 bg-transparent text-white fs-5" id="floatingPassword" placeholder="Password"/>
+                               <label htmlFor="floatingPassword">Password</label>
                            </div>
 
-                           <button className="btn btn-primary" id={"LoginButton"} type={"submit"}>Login</button>
+                           <button className={"btn btn-light  mx-auto my-auto bg-transparent text-white btn-login"} style={{width:"130px"}}>Sign in</button>
+
                        </form>
+
+
+
                    </div>
-
-
 
                </div>
 
+               </section>
 
            </>
 
-/*
-            <div  id={"LoginBody"}>
-                <h1 id={"WelcomeBack"}>Welcome Back </h1>
-                <h1 id={"ToCoinBot"}>To CoinBot</h1>
-
-
-
-                <div id={"backColor"}>
-
-                </div>
-
-                <h2 id={"Prueba"}>aaaaaaaaaaaaaaaaaaaaa</h2>
-
-                <div className={"container-fluid"} id={"LoginContainer"}>
-                    <h1 id={"LoginTitle"}>Login</h1>
-
-                    <form id={"Login"}>
-                        <div className={"form-floating"}>
-                            <input placeholder={"Add your FirstName"} type={"text"} name={"firstName"} required
-                                   className={"form-control"} autoComplete={"off"}/><br/>
-                            <label htmlFor={"firstName"}>User</label>
-                        </div>
-
-                        <div className={"form-floating"}>
-                            <input placeholder={"Add your LastName"} type={"password"} name={"lastName"} required
-                                   className={"form-control"} autoComplete={"off"}/><br/>
-                            <label htmlFor={"lastName"}>Password</label>
-                        </div>
-
-                        <button className="btn btn-primary" id={"LoginButton"} type={"submit"}>Login</button>
-                    </form>
-                </div>
-            </div>*/
         );
     }
 
