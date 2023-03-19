@@ -11,12 +11,11 @@ import ICoin from "../../types/Icoin";
 
 
 const EditCoinModal = ({
-                           id,
                            handleSubmitCoinInfo, show,
                            handleCloseModal, selectedCoin
                        }:
                            {
-                               show: boolean, handleShowModal: any, handleCloseModal: any, id: number,
+                               show: boolean, handleShowModal: any, handleCloseModal: any,
                                handleSubmitCoinInfo: FormEventHandler, selectedCoin?: ICoin
                            }): JSX.Element => {
 
@@ -52,11 +51,24 @@ const EditCoinModal = ({
     }
 
     const updateValueSelectedCoin = (event: any): void => {
-        selectedCoin!.assignedUsd = Number(assignedUsd);
-        selectedCoin!.minimumUsdToBuy = Number(minimumUsdToBuy);
-        selectedCoin!.minimumUsdToSell = Number(minimumUsdToSell);
-        selectedCoin!.assignedUsdToBuyInOffer = Number(assignedUsdToBuy);
-        selectedCoin!.assignedUsdToSellInOffer = Number(assignedUsdToSell);
+        if (assignedUsd) {
+            selectedCoin!.assignedUsd = Number(assignedUsd);
+        }
+        if (minimumUsdToBuy) {
+            selectedCoin!.minimumUsdToBuy = Number(minimumUsdToBuy);
+        }
+
+        if (minimumUsdToSell) {
+            selectedCoin!.minimumUsdToSell = Number(minimumUsdToSell);
+        }
+
+        if (assignedUsdToBuy) {
+            selectedCoin!.assignedUsdToBuyInOffer = Number(assignedUsdToBuy);
+        }
+
+        if (assignedUsdToSell) {
+            selectedCoin!.assignedUsdToSellInOffer = Number(assignedUsdToSell);
+        }
         handleSubmitCoinInfo(event);
     }
 
@@ -114,9 +126,9 @@ const EditCoinModal = ({
                         </div>
 
                         <div className="form-check ms-4">
-                            <input className="form-check-input" type="checkbox" value={id}
+                            <input className="form-check-input" type="checkbox" value={selectedCoin?.id}
                                    defaultChecked={selectedCoin?.isTrading}
-                                   id={"check-" + id} onClick={handleCheckBox}/>
+                                   id={"check-" + selectedCoin?.id} onClick={handleCheckBox}/>
                             <label htmlFor={"isTrading"}>Trading</label>
                         </div>
 
