@@ -1,13 +1,14 @@
 import {toast} from "react-toastify";
+import {HttpStatusCode} from "axios";
 
 
 export class Notification {
 
 
-    public UpdateCoinNotification = (success:any) => {
+    public UpdateCoinNotification = (response:HttpStatusCode) => {
 
-       switch (success.success) {
-           case true:
+       switch (response) {
+           case HttpStatusCode.Accepted:
                toast.success("Updated Coin", {
                    position: "top-right",
                    autoClose: 5000,
@@ -19,7 +20,7 @@ export class Notification {
                    theme: "dark",
                });
                break;
-           case false:
+           default:
                toast.error("An error occurred when you tried to update the coin", {
                    position: "top-right",
                    autoClose: 5000,
@@ -30,9 +31,7 @@ export class Notification {
                    progress: undefined,
                    theme: "dark",
                });
-
        }
-
     }
 
     public CreateMarginNotification = (success:any) => {
