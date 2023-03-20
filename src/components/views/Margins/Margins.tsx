@@ -30,7 +30,7 @@ const Margins = ():JSX.Element => {
 
         (async () => {
             const data = await axios.get("/api/margins");
-            setMargins(data.data);
+            setMargins(data.data.data);
 
         })();
 
@@ -38,7 +38,7 @@ const Margins = ():JSX.Element => {
 
     const getAllData = async ():Promise<void> => {
         const data = await axios.get("/api/margins");
-        setMargins(data.data);
+        setMargins(data.data.data);
     }
 
 
@@ -83,7 +83,7 @@ const Margins = ():JSX.Element => {
         console.log(obj);
 
         const response = await axios.put("/api/margins", obj);
-        notification.UpdateMarginNotification(response.data);
+        notification.UpdateMarginNotification(response.status);
         await getAllData();
     }
     const handleDeleteMarginModal = async ():Promise<void> => {
@@ -92,7 +92,7 @@ const Margins = ():JSX.Element => {
         }
         console.log(obj);
         const response = await axios.delete("/api/margins", {data: obj});
-        notification.DeleteMarginNotification(response.data);
+        notification.DeleteMarginNotification(response.status);
         console.log(obj);
         await getAllData();
     }
@@ -147,7 +147,7 @@ const Margins = ():JSX.Element => {
             orderType: orderTypeModal
         }
         const response = await axios.post("/api/margins", obj);
-        notification.CreateMarginNotification(response.data);
+        notification.CreateMarginNotification(response.status);
     }
 
     //END SAVE MARGIN

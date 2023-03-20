@@ -4,133 +4,68 @@ import {HttpStatusCode} from "axios";
 
 export class Notification {
 
-
-    public UpdateCoinNotification = (response:HttpStatusCode) => {
-
-       switch (response) {
-           case HttpStatusCode.Accepted:
-               toast.success("Updated Coin", {
-                   position: "top-right",
-                   autoClose: 5000,
-                   hideProgressBar: false,
-                   closeOnClick: true,
-                   pauseOnHover: true,
-                   draggable: true,
-                   progress: undefined,
-                   theme: "dark",
-               });
-               break;
-           default:
-               toast.error("An error occurred when you tried to update the coin", {
-                   position: "top-right",
-                   autoClose: 5000,
-                   hideProgressBar: false,
-                   closeOnClick: true,
-                   pauseOnHover: true,
-                   draggable: true,
-                   progress: undefined,
-                   theme: "dark",
-               });
-       }
-    }
-
-    public CreateMarginNotification = (success:any) => {
-
-        switch (success.success) {
-            case true:
-                toast.success("New Margin created", {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
-                break;
-            case false:
-                toast.error("An error occurred when you tried to create the margin", {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
-
+    public UpdateCoinNotification = (response: HttpStatusCode) => {
+        if (response === HttpStatusCode.Accepted) {
+            this.showToastSuccess("Updated Coin");
+        } else {
+            this.showToastError("An error occurred when you tried to update the coin");
         }
-
     }
 
+    public CreateMarginNotification = (response: HttpStatusCode) => {
 
-    public UpdateMarginNotification = (success:any) => {
-
-        switch (success.success) {
-            case true:
-                toast.success("Updated Margin", {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
-                break;
-            case false:
-                toast.error("An error occurred when you tried to update the margin", {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
-
+        if (response === HttpStatusCode.Created) {
+            this.showToastSuccess("New Margin created");
+        } else {
+            this.showToastError("An error occurred when you tried to create the margin");
         }
-
     }
 
-
-    public DeleteMarginNotification = (success:any) => {
-
-        switch (success.success) {
-            case true:
-                toast.success("Deleted Margin", {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
-                break;
-            case false:
-                toast.error("An error occurred when you tried to delete the margin", {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
-
+    public UpdateMarginNotification = (response: HttpStatusCode) => {
+        if (response === HttpStatusCode.Accepted) {
+            this.showToastSuccess("Updated Margin");
+        } else {
+            this.showToastError("An error occurred when you tried to update the margin");
         }
-
     }
 
 
-    public UndefinedNotification = (success:any) => {
+    public DeleteMarginNotification = (response: HttpStatusCode) => {
+        if (response === HttpStatusCode.NoContent) {
+            this.showToastSuccess("Deleted Margin");
+        } else {
+            this.showToastError("An error occurred when you tried to delete the margin");
+        }
+    }
+
+    private showToastSuccess = (message: String) => {
+        toast.success(message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+    }
+
+    private showToastError = (message: String) => {
+        toast.error(message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+    }
+
+
+    public UndefinedNotification = (success: any) => {
         switch (success) {
             case false:
                 toast.error("Please, Select a Coin", {
@@ -143,14 +78,8 @@ export class Notification {
                     progress: undefined,
                     theme: "dark",
                 });
-
         }
-
     }
-
-
 }
-
-
 
 export default Notification;

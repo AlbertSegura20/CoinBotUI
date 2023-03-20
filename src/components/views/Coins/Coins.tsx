@@ -18,8 +18,7 @@ const Coins = (): JSX.Element => {
 
         (async () => {
             const data = await axios.get("/api/coins");
-            if (HttpStatusCode.Ok === data.status) {
-                console.log(data.data.data)
+            if (data.status === HttpStatusCode.Ok) {
                 setCoins(data.data.data);
             }
         })();
@@ -27,7 +26,7 @@ const Coins = (): JSX.Element => {
 
     const getAllCoins = async (): Promise<void> => {
         const data = await axios.get("/api/coins");
-        if (HttpStatusCode.Ok === data.status) {
+        if (data.status === HttpStatusCode.Ok) {
             setCoins(data.data.data);
         }
     }
