@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
 :root{
     --bg-light-white: #E8E8E8;
     --bg-medium-purple: #9370DB;
+    --bg-gradient: -webkit-linear-gradient(-45deg, rgba(247, 202, 201, 1) 0%, rgba(146, 168, 209, 1) 100%);
+    --bg-gradient-1: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+    --bg-gradient-2: radial-gradient( circle 321px at 8.3% 75.7%,  rgba(209,247,241,1) 0%, rgba(249,213,213,1) 81% );
+    --bg-gradient-3: linear-gradient( 109.6deg,  rgba(177,173,219,1) 11.2%, rgba(245,226,226,1) 91.1% );
     /*#B8B8B8*/
 }
 
 .desktop-section{
-    height: 92vh;
+    height: 93vh;
 }
 
 .container-form-desktop{
@@ -13,7 +19,7 @@
 }
 
 .coins-Section{
-    background: var(--bg-light-white);
+    background: var(--bg-gradient);
 
 }
 
@@ -24,6 +30,8 @@
 }
 
 .container-form-items{
+    font-family: 'Mulish', sans-serif;
+    /*font-family: 'PT Serif', serif;*/
     width: 95%;
     background: #fff;
     border-radius: 20px;
@@ -38,6 +46,63 @@
     width: 20%;
 }
 
+
+
+.form-select-coins:focus{
+    box-shadow: none;
+    border: none;
+}
+
+.form-select-coins{
+    font-family: 'PT Serif', serif;
+    font-size: 20px;
+    height: 40px;
+    width: 200px;
+}
+
+
+
+#form-properties{
+    word-break: break-all;
+
+}
+
+@media screen and (min-width: 992px) {
+
+    .mobile-section{
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 991px) {
+
+    .desktop-section{
+        display: none;
+    }
+
+    .form-select-mobile{
+        font-family: 'PT Serif', serif;
+        font-size: 20px;
+        width: 200px;
+    }
+
+    .form-select-mobile:focus{
+        box-shadow: none;
+    }
+}
+
+/*@media screen and (max-width: 992px) and (min-width: 768px){*/
+/*    #form-properties{*/
+/*        font-size: 73%;*/
+/*    }*/
+/*    input[placeholder]{*/
+/*        font-size: 73%;*/
+/*    }*/
+/*}*/
+
+
+/*
 .external-select-container{
     background: #fff;
     width: 95%;
@@ -49,38 +114,9 @@
 }
 
 .internal-select-container{
-    width: 30%;
+    width: 14%;
+    width: 200px;
 }
-
-#form-properties{
-    word-break: break-all;
-
-}
-
-@media screen and (min-width: 768px) {
-
-    .mobile-section{
-        display: none;
-    }
-}
-
-@media screen and (max-width: 767px) {
-
-    .desktop-section{
-        display: none;
-    }
-}
-
-@media screen and (max-width: 992px) and (min-width: 768px){
-    #form-properties{
-        font-size: 73%;
-    }
-    input[placeholder]{
-        font-size: 73%;
-    }
-}
-
-
-
+*/
 
 

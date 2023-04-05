@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from "react";
-import Menu from "../Menu";
+import React, {StrictMode, useEffect, useState} from "react";
+// import Menu from "../Menu";
+import Menu from "../Menu/Menu";
 import MarginsTable from "./MarginsTable";
 import IMargin from "../../types/IMargin";
 import axios from "axios";
@@ -8,6 +9,7 @@ import NewMarginModal from "./NewMarginModal";
 import ICoin from "../../types/Icoin";
 import {Notification} from "../../notification/Notification";
 import {ToastContainer} from "react-toastify";
+import "./MarginsModal.css";
 
 
 const Margins = ():JSX.Element => {
@@ -21,6 +23,8 @@ const Margins = ():JSX.Element => {
     const [orderTypeArray] = useState<string[]>(["SELL", "BUY"]);
     const [orderTypeModal, setNewOrderTypeModal] = useState<string>();
     const [idMargin, setIdMargin] = useState<number>();
+    const [show, setShow] = useState<boolean>(false);
+    const [showEdit, setShowEdit] = useState<boolean>(false);
     const notification = new Notification();
 
 
@@ -49,13 +53,9 @@ const Margins = ():JSX.Element => {
         setName(data.Coin);
         setValue(data.value);
         setOrderType(data.orderType);
-
+        handleEditShowModal();
    }
 
-   const handleLoadSelectCoinMarginModal = async ():Promise<void> => {
-       const data = await axios.get("/api/coins");
-       setCoinNames(data.data);
-   }
 
     const handleChangeEditMarginModal = ({target}: {target:any}):void => {
         // setEditMargin(target.value);
@@ -113,7 +113,15 @@ const Margins = ():JSX.Element => {
 
    //SAVE MARGIN
 
-   const handleCreateMarginModal = ({target}:{target:any}):void => {
+
+    const handleLoadSelectCoinMarginModal = async ():Promise<void> => {
+        // const data = await axios.get("/api/coins");
+        // setCoinNames(data.data);
+        handleShowModal();
+    }
+
+
+    const handleCreateMarginModal = ({target}:{target:any}):void => {
        // // setCoinID(target.name);
        if(target.name === "selectCoin"){
            setCoinID(target.value);
@@ -150,16 +158,47 @@ const Margins = ():JSX.Element => {
         notification.CreateMarginNotification(response.status);
     }
 
+    const handleCloseModal = () => {
+        setShow(false);
+    };
+    const handleShowModal = () => setShow(true);
+
+    const handleEditCloseModal = () => {
+        setShowEdit(false);
+    };
+    const handleEditShowModal = () => setShowEdit(true);
+
     //END SAVE MARGIN
 
     return (
-        <div id={"body"}>
+        <StrictMode>
         <Menu/>
-        <MarginsTable Margins={margins!} handleLoadSelectCoinMarginModal={handleLoadSelectCoinMarginModal} handleLoadMarginModal={handleLoadMarginModal}/>
-        <EditMarginModal updateOrDeleteMarginModal={updateOrDeleteMarginModal} handleChangeEditMarginModal={handleChangeEditMarginModal} handleSubmitEditMarginModal={handleSubmitEditMarginModal} name={name!} value={value!} orderType={orderType!}/>
-        <NewMarginModal CoinsName={coinNames!} orderTypeArray={orderTypeArray}
+        <MarginsTable Margins={margins!}
+                      handleLoadSelectCoinMarginModal={handleLoadSelectCoinMarginModal}
+                      handleLoadMarginModal={handleLoadMarginModal}/>
+
+
+
+
+
+
+
+        <EditMarginModal updateOrDeleteMarginModal={updateOrDeleteMarginModal}
+                         handleChangeEditMarginModal={handleChangeEditMarginModal}
+                         handleSubmitEditMarginModal={handleSubmitEditMarginModal}
+                         name={name!} value={value!} orderType={orderType!}
+                         showEdit={showEdit} handleEditCloseModal={handleEditCloseModal} handleEditShowModal={handleEditShowModal}/>
+
+
+
+
+        <NewMarginModal show={show} handleCloseModal={handleCloseModal} handleShowModal={handleShowModal} CoinsName={coinNames!} orderTypeArray={orderTypeArray}
                         handleCreateMarginModal={handleCreateMarginModal} handleSubmitCreateMarginModal={handleSubmitCreateMarginModal}
                         handleChangeCreateModal={handleChangeCreateModal}/>
+
+        {/*<NewMarginModal CoinsName={coinNames!} orderTypeArray={orderTypeArray}*/}
+        {/*                    handleSubmitCreateMarginModal={handleSubmitCreateMarginModal}*/}
+        {/*                    handleChangeCreateModal={handleChangeCreateModal}/>*/}
 
             <ToastContainer
                 position="top-right"
@@ -173,7 +212,7 @@ const Margins = ():JSX.Element => {
                 pauseOnHover
                 theme="dark"
             />
-        </div>
+        </StrictMode>
     )
 }
 

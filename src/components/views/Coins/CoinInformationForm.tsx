@@ -8,31 +8,31 @@ import Button from "react-bootstrap/Button";
 const CoinInformationForm = ({coins, handleSelectCoin, selectedCoin, handleModalLoadCoinInfo, handleShowModal}: {
     coins: ICoin[] | undefined, handleSelectCoin: ChangeEventHandler, selectedCoin: ICoin, handleModalLoadCoinInfo: any,
     handleShowModal: any
-}): any => {
+}): JSX.Element => {
 
     return (<>
 
         <section className="coins-Section desktop-section">
             <div className="container container-form-desktop d-flex justify-content-center align-items-center">
                 <div className={"container "}>
-                    <div className={"container external-select-container mt-2"}>
-                        <div className={"container internal-select-container"}>
+                    {/*<div className={"container external-select-container mt-2"}>*/}
+                        <div className={"container  internal-select-container d-flex justify-content-center"}>
 
-                            <select className="form-select" aria-label="Default select example"
+                            <select className="form-select form-select-coins" aria-label="Default select example"
                                     onChange={handleSelectCoin} required>
-                                <option value="">Select a Coin</option>
+                                <option value="" className={"align-items-center"}>Select a Coin</option>
                                 {coins?.map((coin, index) => (
                                     <option value={coin.id} key={index}>{coin.name}</option>))}
                             </select>
 
                         </div>
-                    </div>
+                    {/*</div>*/}
 
                     <br/>
 
                     <div className={"container container-form-items"}>
                         <div className={"form-header"}>
-                            <h2>Coin Detail</h2>
+                            <h2 className={"pt-2"}>Coins Information</h2>
                         </div>
 
                         <br/>
@@ -45,6 +45,7 @@ const CoinInformationForm = ({coins, handleSelectCoin, selectedCoin, handleModal
                                            className="form-control" disabled
                                            placeholder={"Name"}/>
                                 </div>
+
 
                                 <div className="col-3">
                                     <label htmlFor="Symbol" id={"form-properties"}
@@ -62,10 +63,10 @@ const CoinInformationForm = ({coins, handleSelectCoin, selectedCoin, handleModal
                                            placeholder={"Coin Amount"}/>
                                 </div>
                             </div>
+                            <br/>
 
                             <div className="row justify-content-between">
                                 <div className="col-3">
-                                    {/*minimumUsdToBuy===undefined ? CoinData?.minimumUsdToBuy : CoinData.minimumUsdToBuy = minimumUsdToBuy*/}
                                     <label htmlFor="MinimumUSDToBuy" id={"form-properties"}
                                            className="form-label">Minimum USD To Buy</label>
                                     <input type="text" id={"input-properties"} name={"MinimumUSDToBuy"}
@@ -75,7 +76,6 @@ const CoinInformationForm = ({coins, handleSelectCoin, selectedCoin, handleModal
                                 </div>
 
                                 <div className="col-3">
-                                    {/*minimumUsdToSell===undefined ? CoinData?.minimumUsdToSell : CoinData.minimumUsdToSell = minimumUsdToSell*/}
                                     <label htmlFor="MinimumUSDToSell" id={"form-properties"}
                                            className="form-label">Minimum USD To Sell</label>
                                     <input type="text" name={"MinimumUSDToSell"}
@@ -85,7 +85,6 @@ const CoinInformationForm = ({coins, handleSelectCoin, selectedCoin, handleModal
                                 </div>
 
                                 <div className="col-3">
-                                    {/*assignedUsd===undefined ? CoinData?.assignedUsd : CoinData.assignedUsd = assignedUsd*/}
                                     <label htmlFor="AssignedUSD" id={"form-properties"}
                                            className="form-label">Assigned USD</label>
                                     <input type="text" name={"AssignedUSD"} defaultValue={selectedCoin?.assignedUsd}
@@ -93,7 +92,7 @@ const CoinInformationForm = ({coins, handleSelectCoin, selectedCoin, handleModal
                                            placeholder={"Assigned USD"}/>
                                 </div>
                             </div>
-
+                            <br/>
 
                             <div className="row justify-content-between">
                                 <div className="col-3">
@@ -106,7 +105,6 @@ const CoinInformationForm = ({coins, handleSelectCoin, selectedCoin, handleModal
                                 </div>
 
                                 <div className="col-3">
-                                    {/*assignedUsdToBuyInOffer===undefined ? CoinData?.assignedUsdToBuyInOffer : CoinData.assignedUsdToBuyInOffer = assignedUsdToBuyInOffer*/}
                                     <label htmlFor="AssignedUSDToBuyInOffer" id={"form-properties"}
                                            className="form-label">Assigned USD To Buy In Offer</label>
                                     <input type="text" name={"AssignedUSDToBuyInOffer"}
@@ -117,7 +115,6 @@ const CoinInformationForm = ({coins, handleSelectCoin, selectedCoin, handleModal
                                 </div>
 
                                 <div className="col-3">
-                                    {/*assignedUsdToSellInOffer===undefined ? CoinData?.assignedUsdToSellInOffer: CoinData.assignedUsdToSellInOffer = assignedUsdToSellInOffer*/}
                                     <label htmlFor="AssignedUSDToSellInOffer" id={"form-properties"}
                                            className="form-label">Assigned USD To Sell In Offer</label>
                                     <input type="text" name={"AssignedUSDToSellInOffer"}
@@ -126,7 +123,7 @@ const CoinInformationForm = ({coins, handleSelectCoin, selectedCoin, handleModal
                                            placeholder={"Assigned USD To Sell In Offer"}/>
                                 </div>
                             </div>
-
+                            <br/>
 
                             <div className="row justify-content-between">
                                 <div className="col-3">
@@ -155,7 +152,7 @@ const CoinInformationForm = ({coins, handleSelectCoin, selectedCoin, handleModal
                                            placeholder={"Last Buy Order Price"}/>
                                 </div>
                             </div>
-
+                            <br/>
 
                             <div className="row justify-content-between">
                                 <div className="col-3">
@@ -202,10 +199,10 @@ const CoinInformationForm = ({coins, handleSelectCoin, selectedCoin, handleModal
         <section className={"coins-Section min-vh-100 mobile-section "}>
             <div className="container container-form d-flex justify-content-center align-items-center">
                 <div className={"container mobile-container"}>
-                    <div className={"container external-select-container mt-2"}>
-                        <div className={"container internal-select-container"}>
+                    {/*<div className={"container external-select-container mt-2"}>*/}
+                        <div className={"container internal-select-container d-flex justify-content-center mt-2"}>
 
-                            <select className="form-select" aria-label="Default select example"
+                            <select className="form-select form-select-mobile" aria-label="Default select example"
                                     onChange={handleSelectCoin} required>
                                 <option value="">Select a Coin</option>
                                 {coins?.map((coin, index) => (
@@ -213,18 +210,21 @@ const CoinInformationForm = ({coins, handleSelectCoin, selectedCoin, handleModal
                             </select>
 
                         </div>
-                    </div>
+                    {/*</div>*/}
 
                     <br/>
 
                     <div className={"container container-form-items"}>
-                        <div className={"form-header"}>
-                            <h2>Coins Detail</h2>
-                        </div>
-
-                        <br/>
 
                         <form>
+
+                            <div className={"form-header form-floating"}>
+                                <h2 className={"pt-2"}>Coins Information</h2>
+                            </div>
+
+                            <br/>
+
+
                             <div className="form-floating mb-3">
                                 <input type="text" name={"Name"} defaultValue={selectedCoin?.name}
                                        className="form-control"
@@ -336,7 +336,7 @@ const CoinInformationForm = ({coins, handleSelectCoin, selectedCoin, handleModal
                             </div>
 
                             <div className="form-floating">
-                                <input type="text" name={"IsTrading"} defaultValue={String(selectedCoin?.isTrading)}
+                                <input type="text" name={"IsTrading"} defaultValue={selectedCoin?.isTrading === undefined ? "N/A" : String(selectedCoin?.isTrading)}
                                        className="form-control" disabled
                                        placeholder={"IsTrading"}/>
                                 <label htmlFor="IsTrading" id={"form-properties"}
@@ -347,8 +347,8 @@ const CoinInformationForm = ({coins, handleSelectCoin, selectedCoin, handleModal
 
                             <br/>
 
-                            <div className="container pb-2 d-flex justify-content-end">
-                                <Button className={"btn btn-success button-form"} onClick={() => handleShowModal()}>
+                            <div className="container pb-2 pe-4 d-flex justify-content-end">
+                                <Button className={"btn btn-secondary button-form"} onClick={() => handleShowModal()}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                          fill="currentColor"
                                          className="bi bi-pencil-fill" viewBox="0 0 16 16">

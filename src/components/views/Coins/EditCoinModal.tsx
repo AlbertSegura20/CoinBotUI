@@ -84,7 +84,7 @@ const EditCoinModal = ({
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <form onSubmit={updateValueSelectedCoin}>
+                    <form onSubmit={updateValueSelectedCoin} className={"form-coin-modal"}>
                         <div className="form-floating mb-3">
 
                             <input type={"number"} name={"assignedUsd"} required className={"form-control"}

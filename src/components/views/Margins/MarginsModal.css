@@ -1,0 +1,13 @@
+.form-select-margins:focus{
+    box-shadow: none;
+}
+
+.form-select-margins{
+    font-family: 'PT Serif', serif;
+    font-size: 17px;
+}
+
+
+.margin-title{
+    font-family: 'Nanum Myeongjo', serif;
+}
