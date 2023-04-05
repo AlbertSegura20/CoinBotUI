@@ -210,12 +210,12 @@ const Orders = ():JSX.Element => {
                         "container-fluid charts d-flex align-items-center justify-content-around border border-dark"
                     }
                 >
-                    <div className="border border-warning container-img data">
+                    <div className="border container-img data">
                         <h3 className={"text-center"}>Numero total XX</h3>
                         <Doughnut data={data} />
                     </div>
 
-                    <div className="border border-danger container-img data1">
+                    <div className="border container-img data1">
                         <h3 className={"text-center"}>Numero total ZZ</h3>
                         <Doughnut data={data1} />
                     </div>
